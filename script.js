@@ -110,51 +110,224 @@ function setupScrollAnimations() {
     },
   });
 
-  // Animation des cartes projet avec parallaxe
-  gsap.utils.toArray(".project-card").forEach((card, index) => {
-    const speed = parseFloat(card.getAttribute("data-speed")) || 1;
+  // Animation des projets avec effet "mesmerising"
+  gsap.utils.toArray(".project-item").forEach((item, index) => {
+    const imageReveal = item.querySelector(".project-reveal-image");
+    const content = item.querySelector(".project-content");
+    const number = item.querySelector(".project-number");
 
-    gsap.to(card, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power3.out",
+    // Timeline pour chaque projet
+    const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: card,
-        start: "top 80%",
-        toggleActions: "play none none none",
+        trigger: item,
+        start: "top 70%",
+        end: "top 20%",
+        scrub: 1,
+        // markers: true,
       },
     });
 
-    // Effet parallaxe
-    gsap.to(card, {
-      y: (i, target) => -ScrollTrigger.maxScroll(window) * (speed - 1) * 0.1,
+    // Animation de révélation de l'image avec clip-path
+    tl.to(imageReveal, {
+      clipPath: "inset(0 0% 0 0)",
+      duration: 1,
+      ease: "power2.inOut",
+    })
+      // Animation du contenu en parallèle
+      .from(
+        content,
+        {
+          opacity: 0,
+          x: index % 2 === 0 ? 50 : -50,
+          duration: 0.8,
+          ease: "power3.out",
+        },
+        "-=0.5"
+      )
+      // Animation du numéro
+      .from(
+        number,
+        {
+          opacity: 0,
+          scale: 0.5,
+          duration: 0.6,
+          ease: "back.out(1.7)",
+        },
+        "-=0.8"
+      );
+  });
+
+  // Animation horizontale des compétences au scroll
+  const skillsContainer = document.querySelector(
+    ".skills-horizontal-container"
+  );
+  const skillsWrapper = document.querySelector(".skills-horizontal-wrapper");
+
+  if (skillsContainer && skillsWrapper) {
+    // Calculer la largeur totale du container
+    const getScrollAmount = () => {
+      const containerWidth = skillsContainer.scrollWidth;
+      const wrapperWidth = skillsWrapper.offsetWidth;
+      return -(containerWidth - wrapperWidth);
+    };
+
+    // Animation de scroll horizontal
+    gsap.to(skillsContainer, {
+      x: getScrollAmount,
       ease: "none",
       scrollTrigger: {
-        trigger: ".projects-section",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
+        trigger: ".skills-section",
+        start: "top top",
+        end: () => `+=${skillsContainer.scrollWidth * 0.4}`,
+        pin: true,
+        scrub: 0.3,
+        invalidateOnRefresh: true,
       },
     });
-  });
 
-  // Animation des catégories de compétences
-  gsap.utils.toArray(".skill-category").forEach((category, index) => {
-    gsap.to(category, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      delay: index * 0.2,
-      ease: "power3.out",
+    // Animation des cartes individuelles au scroll
+    gsap.utils.toArray(".skill-card").forEach((card, index) => {
+      // Rotation légère et scale au passage
+      gsap.fromTo(
+        card,
+        {
+          rotateY: 15,
+          opacity: 0.6,
+          scale: 0.9,
+        },
+        {
+          rotateY: 0,
+          opacity: 1,
+          scale: 1,
+          scrollTrigger: {
+            trigger: card,
+            containerAnimation: gsap.getById(
+              ScrollTrigger.getAll().find(
+                (st) => st.vars.trigger === ".skills-section"
+              )
+            ),
+            start: "left center",
+            end: "right center",
+            scrub: 1,
+          },
+        }
+      );
+    });
+  }
+
+  // Animation du ver dans la section contact
+  const pathContact = document.getElementById("wormPathContact");
+  const circleContact = document.getElementById("movingCircleContact");
+  const sectionContact = document.querySelector(".contact-section");
+  const svgContact = document.querySelector(".worm-path-svg-contact");
+
+  if (pathContact && circleContact && sectionContact && svgContact) {
+    const pathLength = pathContact.getTotalLength();
+    const viewBox = svgContact.viewBox.baseVal;
+
+    gsap.to(circleContact, {
       scrollTrigger: {
-        trigger: category,
-        start: "top 80%",
-        toggleActions: "play none none none",
-        onEnter: () => animateSkillBars(category),
+        trigger: sectionContact,
+        start: "top-=300px top",
+        end: "bottom+=50px bottom",
+        scrub: 1,
+        toggleActions: "play none none reset",
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const point = pathContact.getPointAtLength(progress * pathLength);
+
+          // Recalculer à chaque frame pour avoir la position actuelle
+          const currentSvgRect = svgContact.getBoundingClientRect();
+          const scaleX = currentSvgRect.width / viewBox.width;
+          const scaleY = currentSvgRect.height / viewBox.height;
+
+          const realX = currentSvgRect.left + point.x * scaleX;
+          const realY = currentSvgRect.top + point.y * scaleY;
+
+          let opacity = 0;
+          let circleScale = 1;
+          let holeOpacity = 0;
+          let holeScale = 1;
+
+          // Masquer complètement si hors de la zone
+          if (progress <= 0 || progress >= 1) {
+            opacity = 0;
+            holeOpacity = 0;
+          } else if (progress < 0.25) {
+            opacity = progress / 0.25;
+            holeOpacity = 0;
+          } else if (progress > 0.75) {
+            // Phase de disparition : le trou apparaît et le cercle rétrécit
+            const fadeProgress = (progress - 0.75) / 0.25;
+            opacity = 1 - fadeProgress;
+            circleScale = 1 - fadeProgress * 0.5; // Le cercle rétrécit de 50%
+            holeOpacity = fadeProgress * 0.8; // Le trou apparaît progressivement
+            holeScale = 1 + fadeProgress * 1.5; // Le trou grandit de 150%
+          } else {
+            opacity = 1;
+            holeOpacity = 0;
+          }
+
+          console.log("Position:", { realX, realY, progress, opacity });
+
+          // Animer le cercle
+          gsap.set(circleContact, {
+            left: realX + "px",
+            top: realY + "px",
+            rotation: progress * 360 * 2,
+            opacity: opacity,
+            scale: circleScale,
+            display: opacity > 0 ? "block" : "none",
+            visibility: opacity > 0 ? "visible" : "hidden",
+          });
+
+          // Animer le trou noir
+          const blackHole = document.getElementById("blackHole");
+          if (blackHole && holeOpacity > 0) {
+            gsap.set(blackHole, {
+              left: realX + "px",
+              top: realY + "px",
+              opacity: holeOpacity,
+              scale: holeScale,
+              display: "block",
+              visibility: "visible",
+            });
+          } else if (blackHole) {
+            gsap.set(blackHole, {
+              display: "none",
+              visibility: "hidden",
+            });
+          }
+        },
+        onLeave: () => gsap.set(circleContact, { opacity: 0, display: "none" }),
+        onEnterBack: () => gsap.set(circleContact, { display: "block" }),
+        onLeaveBack: () =>
+          gsap.set(circleContact, { opacity: 0, display: "none" }),
       },
     });
-  });
+  }
+
+  // Bouton retour en haut
+  const scrollToTopBtn = document.getElementById("scrollToTop");
+
+  if (scrollToTopBtn) {
+    // Afficher/masquer le bouton au scroll
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add("visible");
+      } else {
+        scrollToTopBtn.classList.remove("visible");
+      }
+    });
+
+    // Retour en haut au clic
+    scrollToTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  }
 
   // Animation section contact
   gsap.to(".contact-info", {
