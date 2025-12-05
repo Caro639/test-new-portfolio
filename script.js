@@ -581,8 +581,86 @@ function animateFloatingElements() {
   });
 }
 
+// ===== CURSEUR PERSONNALISÉ AVEC EFFET NÉON =====
+function initCustomCursor() {
+  console.log("Initialisation du curseur personnalisé...");
+
+  // Créer les éléments du curseur avec effet 3D
+  const cursor = document.createElement("div");
+  cursor.className = "custom-cursor";
+  cursor.style.cssText =
+    "position: fixed; width: 28px; height: 28px; border-radius: 50%; pointer-events: none; z-index: 99999; " +
+    "background: radial-gradient(circle at 30% 30%, #ff69d4, #ad45c6 40%, #8a2be2 70%, #4b0082); " +
+    "box-shadow: 0 0 20px rgba(173, 69, 198, 1), 0 0 40px rgba(173, 69, 198, 0.6), " +
+    "inset -5px -5px 10px rgba(0, 0, 0, 0.5), inset 5px 5px 10px rgba(255, 255, 255, 0.3); " +
+    "opacity: 1; transition: transform 0.2s ease;";
+
+  const cursorGlow = document.createElement("div");
+  cursorGlow.className = "cursor-glow";
+  cursorGlow.style.cssText =
+    "position: fixed; width: 180px; height: 180px; background: radial-gradient(circle, rgba(173, 69, 198, 0.18) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 99998; mix-blend-mode: screen; opacity: 1;";
+
+  document.body.appendChild(cursor);
+  document.body.appendChild(cursorGlow);
+
+  console.log("Éléments curseur créés:", cursor, cursorGlow);
+
+  // Variables pour suivi fluide de la souris
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+
+  // Capturer la position de la souris
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // Utiliser requestAnimationFrame pour un suivi ultra-fluide et précis
+  function updateCursorPosition() {
+    cursor.style.left = mouseX + "px";
+    cursor.style.top = mouseY + "px";
+    cursor.style.transform = "translate(-50%, -50%)";
+
+    cursorGlow.style.left = mouseX + "px";
+    cursorGlow.style.top = mouseY + "px";
+    cursorGlow.style.transform = "translate(-50%, -50%)";
+
+    requestAnimationFrame(updateCursorPosition);
+  }
+
+  requestAnimationFrame(updateCursorPosition);
+
+  // Effet hover sur les éléments interactifs
+  const interactiveElements = document.querySelectorAll(
+    "a, button, .project-item, .skill-card, input, textarea"
+  );
+
+  interactiveElements.forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      cursor.classList.add("hover");
+    });
+
+    el.addEventListener("mouseleave", () => {
+      cursor.classList.remove("hover");
+    });
+  });
+
+  // Masquer le curseur quand la souris quitte la fenêtre
+  document.addEventListener("mouseleave", () => {
+    cursor.style.opacity = "0";
+    cursorGlow.style.opacity = "0";
+  });
+
+  document.addEventListener("mouseenter", () => {
+    cursor.style.opacity = "1";
+    cursorGlow.style.opacity = "1";
+  });
+}
+
 // ===== INITIALISATION =====
 window.addEventListener("DOMContentLoaded", () => {
+  // Initialiser le curseur personnalisé
+  initCustomCursor();
   // Animation de fade-in de la page
   gsap.from("body", {
     opacity: 0,
