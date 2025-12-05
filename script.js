@@ -661,6 +661,7 @@ function initCustomCursor() {
 window.addEventListener("DOMContentLoaded", () => {
   // Initialiser le curseur personnalisé
   initCustomCursor();
+
   // Animation de fade-in de la page
   gsap.from("body", {
     opacity: 0,
@@ -772,21 +773,36 @@ function animateFloatingStar() {
   const targetChar = chars[5];
 
   if (targetChar) {
-    // Attendre un peu pour que le layout soit stable
-    setTimeout(() => {
-      // Obtenir la position de la section hero et du "o"
-      const heroRect = document.querySelector(".hero").getBoundingClientRect();
-      const charRect = targetChar.getBoundingClientRect();
+    // Fonction pour calculer et mettre à jour la position
+    function updateStarPosition() {
+      const hero = document.querySelector(".hero");
 
-      // Calculer position relative à .hero au lieu du viewport
-      const starX = charRect.left - heroRect.left + charRect.width / 2 - 40; // -40 car étoile fait 80px
-      const starY = charRect.top - heroRect.top - 100; // 100px au-dessus
+      // Utiliser offsetLeft/offsetTop pour position stable
+      let charLeft = targetChar.offsetLeft;
+      let charTop = targetChar.offsetTop;
+
+      // Ajouter les offsets des parents jusqu'à .hero
+      let parent = targetChar.offsetParent;
+      while (parent && parent !== hero) {
+        charLeft += parent.offsetLeft;
+        charTop += parent.offsetTop;
+        parent = parent.offsetParent;
+      }
+
+      // Position: centre du "o", 100px au-dessus, -40px pour centrer l'étoile
+      const starX = charLeft + targetChar.offsetWidth / 2 - 40;
+      const starY = charTop - 100;
 
       gsap.set(star, {
         position: "absolute",
         left: starX + "px",
         top: starY + "px",
       });
+    }
+
+    // Position initiale après un court délai
+    setTimeout(() => {
+      updateStarPosition();
 
       // Timeline d'animation de l'étoile
       const starTimeline = gsap.timeline();
@@ -823,5 +839,14 @@ function animateFloatingStar() {
           "-=3"
         );
     }, 100);
+
+    // Recalculer la position quand on scroll vers le hero
+    ScrollTrigger.create({
+      trigger: ".hero",
+      start: "top top",
+      end: "bottom top",
+      onEnter: updateStarPosition,
+      onEnterBack: updateStarPosition,
+    });
   }
 }
