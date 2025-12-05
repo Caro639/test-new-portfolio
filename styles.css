@@ -1,6 +1,4 @@
 ﻿* {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -9,12 +7,13 @@
   src: url("fonts/Audiowide-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 body {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)
     no-repeat;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   overflow-x: hidden;
   width: 100%;
@@ -491,6 +490,7 @@ h2 {
 }
 
 .project-reveal-image {
+  position: relative;
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, #ad45c6 0%, #3a2b58 50%, #171127 100%);
@@ -501,6 +501,17 @@ h2 {
   transition: all 0.3s ease;
   border: 1px solid #ad45c6;
   border-radius: 20px;
+  overflow: hidden;
+}
+
+.project-reveal-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: hue-rotate(290deg) saturate(1.2);
+  z-index: 1;
 }
 
 .project-image-wrapper {
@@ -513,24 +524,24 @@ h2 {
   transform: scale(1.02);
 }
 
-.project-image-wrapper:hover .project-reveal-image {
-  filter: brightness(1.08) saturate(1.05);
+.project-image-wrapper:hover .project-reveal-image::before {
+  filter: hue-rotate(290deg) saturate(1.2) brightness(1.08);
 }
 
 /* Images individuelles pour chaque projet */
-.project-item:nth-child(1) .project-reveal-image {
+.project-item:nth-child(1) .project-reveal-image::before {
   background-image: url("./images/quezaquo.webp");
 }
 
-.project-item:nth-child(2) .project-reveal-image {
+.project-item:nth-child(2) .project-reveal-image::before {
   background-image: url("../images/projet2.jpg");
 }
 
-.project-item:nth-child(3) .project-reveal-image {
+.project-item:nth-child(3) .project-reveal-image::before {
   background-image: url("../images/projet3.jpg");
 }
 
-.project-item:nth-child(4) .project-reveal-image {
+.project-item:nth-child(4) .project-reveal-image::before {
   background-image: url("../images/accueil.webp");
 }
 
@@ -907,93 +918,6 @@ h2 {
 
 .scroll-to-top:hover svg {
   transform: translateY(-3px);
-}
-
-.confetti:nth-child(1) {
-  left: 5%;
-  bottom: -5%;
-}
-.confetti:nth-child(2) {
-  left: 12%;
-  bottom: -3%;
-}
-.confetti:nth-child(3) {
-  left: 18%;
-  bottom: -8%;
-}
-.confetti:nth-child(4) {
-  left: 25%;
-  bottom: -2%;
-}
-.confetti:nth-child(5) {
-  left: 32%;
-  bottom: -6%;
-}
-.confetti:nth-child(6) {
-  left: 38%;
-  bottom: -4%;
-}
-.confetti:nth-child(7) {
-  left: 45%;
-  bottom: 0;
-}
-.confetti:nth-child(8) {
-  left: 52%;
-  bottom: 0;
-}
-.confetti:nth-child(9) {
-  left: 58%;
-  bottom: 0;
-}
-.confetti:nth-child(10) {
-  left: 65%;
-  bottom: 0;
-}
-.confetti:nth-child(11) {
-  left: 72%;
-  bottom: 0;
-}
-.confetti:nth-child(12) {
-  left: 78%;
-  bottom: 0;
-}
-.confetti:nth-child(13) {
-  left: 85%;
-  bottom: 0;
-}
-.confetti:nth-child(14) {
-  left: 92%;
-  bottom: 0;
-}
-.confetti:nth-child(15) {
-  left: 8%;
-  bottom: 0;
-  height: 60px;
-}
-.confetti:nth-child(16) {
-  left: 15%;
-  bottom: 0;
-  height: 100px;
-}
-.confetti:nth-child(17) {
-  left: 22%;
-  bottom: 0;
-  height: 70px;
-}
-.confetti:nth-child(18) {
-  left: 48%;
-  bottom: 0;
-  height: 90px;
-}
-.confetti:nth-child(19) {
-  left: 68%;
-  bottom: 0;
-  height: 75px;
-}
-.confetti:nth-child(20) {
-  left: 88%;
-  bottom: 0;
-  height: 85px;
 }
 
 .contact-content {

@@ -16,7 +16,7 @@ function splitTextToChars(element) {
   });
 }
 
-// ===== ANIMATION DU TEXTE (Style GSAP.com) =====
+// ===== ANIMATION DU TEXTE =====
 function animateHeroText() {
   const heroTitle = document.getElementById("heroTitle");
 
@@ -398,22 +398,6 @@ function animateCounters() {
   });
 }
 
-// ===== ANIMATION DES BARRES DE COMPÉTENCES =====
-function animateSkillBars(category) {
-  const bars = category.querySelectorAll(".skill-progress");
-
-  bars.forEach((bar, index) => {
-    const progress = bar.getAttribute("data-progress");
-
-    gsap.to(bar, {
-      width: progress + "%",
-      duration: 1.5,
-      delay: index * 0.1,
-      ease: "power3.out",
-    });
-  });
-}
-
 // ===== SMOOTH SCROLL POUR NAVIGATION =====
 function setupSmoothScroll() {
   document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
@@ -623,7 +607,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Setup smooth scroll
   setupSmoothScroll();
-}); // ===== ANIMATION DU GLOBE TOURNANT =====
+});
+
+// ===== ANIMATION DU GLOBE TOURNANT =====
 function animateRotatingGlobe() {
   const globe = document.getElementById("rotatingGlobe");
   const globeContainer = document.getElementById("globeContainer");
