@@ -1,17 +1,20 @@
+// ===== ENREGISTRER LES PLUGINS GSAP =====
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
 // ===== FONCTION POUR DIVISER LE TEXTE EN LETTRES =====
 function splitTextToChars(element) {
-  // Traiter chaque ligne séparément pour préserver les sauts de ligne
-  const lines = element.querySelectorAll(".title-line");
+  // Traiter chaque mot séparément pour préserver les retours à la ligne
+  const words = element.querySelectorAll(".word");
 
-  lines.forEach((line) => {
-    const text = line.textContent.trim();
-    line.innerHTML = "";
+  words.forEach((word) => {
+    const text = word.textContent.trim();
+    word.innerHTML = "";
 
     text.split("").forEach((char) => {
       const span = document.createElement("span");
       span.className = "char";
-      span.textContent = char === " " ? "\u00A0" : char;
-      line.appendChild(span);
+      span.textContent = char;
+      word.appendChild(span);
     });
   });
 }
@@ -39,6 +42,9 @@ function animateHeroText() {
     onComplete: () => {
       // Une fois les lettres animées, positionner et animer l'étoile
       animateFloatingStar();
+
+      // Activer le menu sticky maintenant que l'animation est terminée
+      enableStickyMenu();
     },
   });
 
@@ -157,13 +163,14 @@ function setupScrollAnimations() {
       );
   });
 
-  // Animation horizontale des compétences au scroll
+  // Animation horizontale des compétences au scroll (uniquement desktop)
   const skillsContainer = document.querySelector(
     ".skills-horizontal-container"
   );
   const skillsWrapper = document.querySelector(".skills-horizontal-wrapper");
+  const isDesktop = window.innerWidth > 768;
 
-  if (skillsContainer && skillsWrapper) {
+  if (skillsContainer && skillsWrapper && isDesktop) {
     // Calculer la largeur totale du container
     const getScrollAmount = () => {
       const containerWidth = skillsContainer.scrollWidth;
@@ -172,10 +179,11 @@ function setupScrollAnimations() {
     };
 
     // Animation de scroll horizontal
-    gsap.to(skillsContainer, {
+    const skillsScrollTrigger = gsap.to(skillsContainer, {
       x: getScrollAmount,
       ease: "none",
       scrollTrigger: {
+        id: "skills-horizontal",
         trigger: ".skills-section",
         start: "top top",
         end: () => `+=${skillsContainer.scrollWidth * 0.4}`,
@@ -187,7 +195,7 @@ function setupScrollAnimations() {
 
     // Animation des cartes individuelles au scroll
     gsap.utils.toArray(".skill-card").forEach((card, index) => {
-      // Rotation légère et scale au passage
+      // Rotation légère et scale au passage (desktop uniquement)
       gsap.fromTo(
         card,
         {
@@ -213,23 +221,48 @@ function setupScrollAnimations() {
         }
       );
     });
+  } else if (skillsContainer) {
+    // Animations modernes pour mobile : fade-in + slide-up
+    gsap.utils.toArray(".skill-card").forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.95,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom-=100",
+            end: "top center",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
   }
 
   // Animation du ver dans la section contact
   const pathContact = document.getElementById("wormPathContact");
   const circleContact = document.getElementById("movingCircleContact");
-  const sectionContact = document.querySelector(".contact-section");
+  const wormWrapContact = document.querySelector(".worm-wrap-contact");
   const svgContact = document.querySelector(".worm-path-svg-contact");
 
-  if (pathContact && circleContact && sectionContact && svgContact) {
+  if (pathContact && circleContact && wormWrapContact && svgContact) {
     const pathLength = pathContact.getTotalLength();
     const viewBox = svgContact.viewBox.baseVal;
 
     gsap.to(circleContact, {
       scrollTrigger: {
-        trigger: sectionContact,
-        start: "top-=300px top",
-        end: "bottom+=50px bottom",
+        trigger: wormWrapContact,
+        start: "top center",
+        end: "bottom center",
         scrub: 1,
         toggleActions: "play none none reset",
         onUpdate: (self) => {
@@ -406,11 +439,14 @@ function setupSmoothScroll() {
       const target = document.querySelector(this.getAttribute("href"));
 
       if (target) {
+        // Offset adapté selon la section
+        const offset = target.id === "skills" ? 0 : 80;
+
         gsap.to(window, {
           duration: 1.5,
           scrollTo: {
             y: target,
-            offsetY: 80,
+            offsetY: offset,
           },
           ease: "power3.inOut",
         });
@@ -432,29 +468,7 @@ function animateWormPath() {
   }
 
   const pathLength = path.getTotalLength();
-
-  // Obtenir les dimensions réelles du SVG et du viewBox
-  const svgRect = svg.getBoundingClientRect();
   const viewBox = svg.viewBox.baseVal;
-  const scaleX = svgRect.width / viewBox.width;
-  const scaleY = svgRect.height / viewBox.height;
-
-  console.log("SVG dimensions:", svgRect.width, svgRect.height);
-  console.log("ViewBox:", viewBox.width, viewBox.height);
-  console.log("Scale:", scaleX, scaleY);
-  console.log("SVG position:", svgRect.left, svgRect.top);
-
-  // Position initiale du cercle au début du chemin
-  const startPoint = path.getPointAtLength(0);
-  const startX = svgRect.left + startPoint.x * scaleX;
-  const startY = svgRect.top + startPoint.y * scaleY;
-
-  gsap.set(circle, {
-    left: startX + "px",
-    top: startY + "px",
-    xPercent: -50,
-    yPercent: -50,
-  });
 
   gsap.to(circle, {
     scrollTrigger: {
@@ -467,8 +481,10 @@ function animateWormPath() {
         const progress = self.progress;
         const point = path.getPointAtLength(progress * pathLength);
 
-        // Obtenir la position actuelle du SVG (peut changer au scroll)
+        // Recalculer les échelles à chaque frame pour supporter le redimensionnement
         const currentSvgRect = svg.getBoundingClientRect();
+        const scaleX = currentSvgRect.width / viewBox.width;
+        const scaleY = currentSvgRect.height / viewBox.height;
 
         // Convertir les coordonnées SVG en coordonnées absolues de la page
         const realX = currentSvgRect.left + point.x * scaleX;
@@ -583,6 +599,12 @@ function animateFloatingElements() {
 
 // ===== CURSEUR PERSONNALISÉ AVEC EFFET NÉON =====
 function initCustomCursor() {
+  // Désactiver le curseur personnalisé sur les appareils tactiles
+  if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+    console.log("Appareil tactile détecté - curseur personnalisé désactivé");
+    return;
+  }
+
   console.log("Initialisation du curseur personnalisé...");
 
   // Créer les éléments du curseur avec effet 3D
@@ -678,6 +700,9 @@ window.addEventListener("DOMContentLoaded", () => {
   // Lancer l'animation du ver avec cercle 3D
   animateWormPath();
 
+  // Initialiser le formulaire de contact
+  initContactForm();
+
   // Lancer l'animation des éléments flottants
   animateFloatingElements();
 
@@ -686,6 +711,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Setup smooth scroll
   setupSmoothScroll();
+
+  // Initialiser le menu mobile
+  initMobileMenu();
+
+  // Activer le suivi de section active dans le menu
+  updateActiveMenuLink();
 });
 
 // ===== ANIMATION DU GLOBE TOURNANT =====
@@ -849,4 +880,237 @@ function animateFloatingStar() {
       onEnterBack: updateStarPosition,
     });
   }
+}
+
+// ===== GESTION DU FORMULAIRE DE CONTACT =====
+function initContactForm() {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector(".submit-btn");
+    const btnText = submitBtn.querySelector(".btn-text");
+    const btnLoader = submitBtn.querySelector(".btn-loader");
+    const formMessage = form.querySelector(".form-message");
+
+    // Récupérer les données
+    const formData = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      message: document.getElementById("message").value.trim(),
+      honeypot: document.getElementById("honeypot").value,
+    };
+
+    // Validation basique côté client
+    if (formData.name.length < 2) {
+      showFormMessage("Le nom doit contenir au moins 2 caractères", "error");
+      return;
+    }
+
+    if (!isValidEmail(formData.email)) {
+      showFormMessage("Veuillez entrer un email valide", "error");
+      return;
+    }
+
+    if (formData.message.length < 10) {
+      showFormMessage(
+        "Le message doit contenir au moins 10 caractères",
+        "error"
+      );
+      return;
+    }
+
+    // État de chargement
+    submitBtn.disabled = true;
+    btnText.style.display = "none";
+    btnLoader.style.display = "inline-block";
+    formMessage.style.display = "none";
+
+    try {
+      const response = await fetch("contact.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        showFormMessage(result.message, "success");
+        form.reset();
+      } else {
+        showFormMessage(result.message || "Une erreur est survenue", "error");
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
+      showFormMessage("Erreur de connexion. Veuillez réessayer.", "error");
+    } finally {
+      submitBtn.disabled = false;
+      btnText.style.display = "inline";
+      btnLoader.style.display = "none";
+    }
+  });
+
+  function showFormMessage(message, type) {
+    const formMessage = form.querySelector(".form-message");
+    formMessage.textContent = message;
+    formMessage.style.display = "block";
+    formMessage.style.background =
+      type === "success" ? "rgba(34, 197, 94, 0.1)" : "rgba(239, 68, 68, 0.1)";
+    formMessage.style.color = type === "success" ? "#22c55e" : "#ef4444";
+    formMessage.style.border = `1px solid ${
+      type === "success" ? "#22c55e" : "#ef4444"
+    }`;
+
+    // Animation d'apparition
+    gsap.fromTo(
+      formMessage,
+      { opacity: 0, y: -10 },
+      { opacity: 1, y: 0, duration: 0.3 }
+    );
+
+    // Masquer après 5 secondes si succès
+    if (type === "success") {
+      setTimeout(() => {
+        gsap.to(formMessage, {
+          opacity: 0,
+          y: -10,
+          duration: 0.3,
+          onComplete: () => {
+            formMessage.style.display = "none";
+          },
+        });
+      }, 5000);
+    }
+  }
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+}
+
+// ===== MENU MOBILE RESPONSIVE =====
+function initMobileMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const navMobileOverlay = document.getElementById("navMobileOverlay");
+  const closeMenu = document.getElementById("closeMenu");
+  const navMobileLinks = document.querySelectorAll(".nav-mobile a");
+
+  if (!hamburger || !navMobileOverlay) return;
+
+  // Fonction pour fermer le menu
+  function closeMenuMobile() {
+    hamburger.classList.remove("active");
+    navMobileOverlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  // Toggle menu au clic du hamburger
+  hamburger.addEventListener("click", () => {
+    const isActive = hamburger.classList.toggle("active");
+    navMobileOverlay.classList.toggle("active");
+    hamburger.setAttribute("aria-expanded", isActive);
+
+    // Bloquer le scroll quand le menu est ouvert
+    document.body.style.overflow = isActive ? "hidden" : "";
+  });
+
+  // Fermer le menu au clic sur le bouton de fermeture
+  if (closeMenu) {
+    closeMenu.addEventListener("click", closeMenuMobile);
+  }
+
+  // Fermer le menu au clic sur un lien
+  navMobileLinks.forEach((link) => {
+    link.addEventListener("click", closeMenuMobile);
+  });
+
+  // Fermer le menu avec la touche Échap
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && navMobileOverlay.classList.contains("active")) {
+      closeMenuMobile();
+    }
+  });
+}
+
+// ===== ACTIVER LE MENU STICKY =====
+function enableStickyMenu() {
+  const menu = document.querySelector(".menu");
+  if (!menu) return;
+
+  // Observer le scroll pour rendre le menu sticky
+  let ticking = false;
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > 0) {
+          menu.classList.add("sticky");
+        } else {
+          menu.classList.remove("sticky");
+        }
+
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  });
+}
+
+// ===== ACTIVER LE LIEN DU MENU SELON LA SECTION =====
+function updateActiveMenuLink() {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-desktop a, .nav-mobile a");
+
+  window.addEventListener("scroll", () => {
+    // Si on est tout en haut de la page, activer Accueil
+    if (window.scrollY < 100) {
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === "/") {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+      return;
+    }
+
+    // Trouver la section actuellement visible (celle la plus proche du centre de l'écran)
+    let currentSection = "";
+    let minDistance = Infinity;
+
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const sectionCenter = rect.top + rect.height / 2;
+      const viewportCenter = window.innerHeight / 2;
+      const distance = Math.abs(sectionCenter - viewportCenter);
+
+      // Si la section est visible dans le viewport et plus proche du centre
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        if (distance < minDistance) {
+          minDistance = distance;
+          currentSection = section.getAttribute("id");
+        }
+      }
+    });
+
+    // Mettre à jour la classe active sur les liens
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      const href = link.getAttribute("href");
+
+      if (currentSection && href === `#${currentSection}`) {
+        link.classList.add("active");
+      }
+    });
+  });
 }

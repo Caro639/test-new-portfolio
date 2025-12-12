@@ -1,0 +1,26 @@
+# Fichiers de configuration sensibles
+config.php
+.env
+install-phpmailer.ps1
+
+# Fichiers de test locaux (optionnel)
+test-compatibilite.html
+
+# Logs
+*.log
+error_log
+
+# Système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporaires
+*.tmp
+*.temp
