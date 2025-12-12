@@ -24,3 +24,11 @@ desktop.ini
 # Temporaires
 *.tmp
 *.temp
+*~
+
+# Fichiers cachés (sauf .gitignore)
+.*
+!.gitignore
+
+# Librairies externes
+PHPMailer/
