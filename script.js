@@ -116,7 +116,7 @@ function setupScrollAnimations() {
     },
   });
 
-  // Animation des projets avec effet "mesmerising"
+  // Animation des projets avec effet de révélation d'image
   gsap.utils.toArray(".project-item").forEach((item, index) => {
     const imageReveal = item.querySelector(".project-reveal-image");
     const content = item.querySelector(".project-content");
@@ -195,7 +195,7 @@ function setupScrollAnimations() {
 
     // Animation des cartes individuelles au scroll
     gsap.utils.toArray(".skill-card").forEach((card, index) => {
-      // Rotation légère et scale au passage (desktop uniquement)
+      // Rotation légère et apparition progressive
       gsap.fromTo(
         card,
         {
@@ -301,7 +301,7 @@ function setupScrollAnimations() {
             holeOpacity = 0;
           }
 
-          console.log("Position:", { realX, realY, progress, opacity });
+          // console.log("Position:", { realX, realY, progress, opacity });
 
           // Animer le cercle
           gsap.set(circleContact, {
@@ -601,11 +601,11 @@ function animateFloatingElements() {
 function initCustomCursor() {
   // Désactiver le curseur personnalisé sur les appareils tactiles
   if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
-    console.log("Appareil tactile détecté - curseur personnalisé désactivé");
+    // console.log("Appareil tactile détecté - curseur personnalisé désactivé");
     return;
   }
 
-  console.log("Initialisation du curseur personnalisé...");
+  // console.log("Initialisation du curseur personnalisé...");
 
   // Créer les éléments du curseur avec effet 3D
   const cursor = document.createElement("div");
@@ -625,7 +625,7 @@ function initCustomCursor() {
   document.body.appendChild(cursor);
   document.body.appendChild(cursorGlow);
 
-  console.log("Éléments curseur créés:", cursor, cursorGlow);
+  // console.log("Éléments curseur créés:", cursor, cursorGlow);
 
   // Variables pour suivi fluide de la souris
   let mouseX = window.innerWidth / 2;
