@@ -116,6 +116,26 @@ function setupScrollAnimations() {
     },
   });
 
+  // Lazy loading des backgrounds ::before via ajout de la classe .bg-loaded
+  const revealImages = document.querySelectorAll(".project-reveal-image");
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("bg-loaded");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px 200px 0px" }
+    );
+    revealImages.forEach((el) => observer.observe(el));
+  } else {
+    // Fallback si IntersectionObserver non supporté
+    revealImages.forEach((el) => el.classList.add("bg-loaded"));
+  }
+
   // Animation des projets avec effet de révélation d'image
   gsap.utils.toArray(".project-item").forEach((item, index) => {
     const imageReveal = item.querySelector(".project-reveal-image");

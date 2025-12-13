@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "Audiowide";
-  src: url("fonts/Audiowide-Regular.ttf") format("truetype");
+  src: url("fonts/Audiowide-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -95,6 +95,10 @@ body {
   z-index: 102;
 }
 
+.logo:hover {
+  transform: scale(1.08) rotate(-3deg);
+  transition: transform 0.2s ease;
+}
 /* Navigation desktop */
 .nav-desktop ul {
   display: flex;
@@ -921,20 +925,20 @@ h2 {
 }
 
 /* Images individuelles pour chaque projet */
-.project-item:nth-child(1) .project-reveal-image::before {
+.project-item:nth-child(1) .project-reveal-image.bg-loaded::before {
   background-image: url("./images/quezaquo.webp");
 }
 
-.project-item:nth-child(2) .project-reveal-image::before {
-  background-image: url("../images/hellorectte.webp");
+.project-item:nth-child(2) .project-reveal-image.bg-loaded::before {
+  background-image: url("./images/hellorectte.webp");
 }
 
-.project-item:nth-child(3) .project-reveal-image::before {
-  background-image: url("../images/accueil-pausecaf.webp");
+.project-item:nth-child(3) .project-reveal-image.bg-loaded::before {
+  background-image: url("./images/accueil-pausecaf.webp");
 }
 
-.project-item:nth-child(4) .project-reveal-image::before {
-  background-image: url("../images/accueil-blog-rev.webp");
+.project-item:nth-child(4) .project-reveal-image.bg-loaded::before {
+  background-image: url("./images/accueil-blog-rev.webp");
 }
 
 .project-content {

@@ -3,11 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Création de site à Clermont-Ferrand Riom</title>
+    <link rel="stylesheet" href="404.css" />
+    <title>404 - Page non trouvée</title>
   </head>
   <body>
-    <h1>Page non trouvée (404)</h1>
-    <p>La page que vous recherchez n'existe pas.</p>
-    <a href="/">Retour à l'accueil</a>
+    <a href="/" class="logo-404">
+      <img src="images/logo.webp" alt="Logo du site" />
+    </a>
+    <h1>404</h1>
+    <p>Oups ! Cette page s'est perdue dans l'espace...</p>
+    <div id="game-container">
+      <div class="game-instructions">
+        Utilise les flèches ← → ou les boutons ci-dessous pour te déplacer et
+        <b>espace</b> ou <b>tirer</b> pour lancer un laser !
+      </div>
+      <canvas id="spaceGame" width="700" height="480"></canvas>
+      <div id="touch-controls">
+        <button
+          id="btn-left"
+          class="btn-game"
+          aria-label="Gauche"
+          type="button"
+        >
+          ←
+        </button>
+        <button
+          id="btn-fire"
+          class="btn-game-fire"
+          aria-label="Tirer"
+          type="button"
+        >
+          ⦾
+        </button>
+        <button
+          id="btn-right"
+          class="btn-game"
+          aria-label="Droite"
+          type="button"
+        >
+          →
+        </button>
+      </div>
+      <button id="btn-replay" class="btn-replay" type="button">Rejouer</button>
+    </div>
+    <a href="/" class="btn-home">Retour à l'accueil</a>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Ozya - Portfolio - Tous droits réservés</p>
+    </footer>
+    <script src="script-404.js"></script>
   </body>
 </html>

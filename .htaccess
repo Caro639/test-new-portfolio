@@ -1,8 +1,8 @@
 # Sécurité et optimisation pour Apache (O2switch)
 
-ErrorDocument 404 /404.html
-ErrorDocument 500 /500.html
-ErrorDocument 403 /403.html
+ErrorDocument 404 /test-ozya-www/404.html
+ErrorDocument 500 /test-ozya-www/404.html
+ErrorDocument 403 /test-ozya-www/404.html
 
 ## Protection du fichier de configuration
 
@@ -81,7 +81,7 @@ Options -Indexes
 <IfModule mod_rewrite.c>
     RewriteEngine on
     RewriteCond %{HTTP_REFERER} !^$
-    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?tondomaine\.com [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?localhost/test-ozya-www/ [NC]
     RewriteRule \.(jpg|jpeg|png|gif|webp|svg)$ - [F,NC]
 </IfModule>
 
