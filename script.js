@@ -156,7 +156,7 @@ function setupScrollAnimations() {
     // Animation de révélation de l'image avec clip-path
     tl.to(imageReveal, {
       clipPath: "inset(0 0% 0 0)",
-      duration: 1,
+      duration: 0.2, // Durée réduite pour accélérer l'animation
       ease: "power2.inOut",
     })
       // Animation du contenu en parallèle
