@@ -926,19 +926,19 @@ h2 {
 
 /* Images individuelles pour chaque projet */
 .project-item:nth-child(1) .project-reveal-image.bg-loaded::before {
-  background-image: url("./images/quezaquo.webp");
+  background-image: url("./images/site-queza.webp");
 }
 
 .project-item:nth-child(2) .project-reveal-image.bg-loaded::before {
-  background-image: url("./images/hellorectte.webp");
+  background-image: url("./images/hello-site.webp");
 }
 
 .project-item:nth-child(3) .project-reveal-image.bg-loaded::before {
-  background-image: url("./images/accueil-pausecaf.webp");
+  background-image: url("./images/cafe-site.webp");
 }
 
 .project-item:nth-child(4) .project-reveal-image.bg-loaded::before {
-  background-image: url("./images/accueil-blog-rev.webp");
+  background-image: url("./images/site-blog-rev.webp");
 }
 
 .project-content {
