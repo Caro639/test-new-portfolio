@@ -22,8 +22,7 @@
       href="./images/terra.webp"
       fetchpriority="high"
     />
-    <link rel="icon" href="./images/favicon_terra.ico" type="image/x-icon" />
-    <link rel="preload" href="./images/terra.webp" as="image" />
+    <link rel="icon" href="./favicon_terra.ico" type="image/x-icon" />
     <link rel="preload" href="./images/logo.webp" as="image" />
     <link rel="canonical" href="https://www.web-developer.ozya.fr/" />
     <title>Création de site à Clermont-Ferrand Riom</title>
@@ -31,9 +30,17 @@
 
   <body>
     <div class="menu">
-      <a href="/">
-        <img src="./images/logo.webp" alt="Logo du site" class="logo" />
-      </a>
+      <header>
+        <a href="/">
+          <img
+            src="./images/logo.webp"
+            alt="Logo du site"
+            class="logo"
+            width="200"
+            height="56"
+          />
+        </a>
+      </header>
 
       <!-- Bouton hamburger (visible sur mobile/tablette) -->
       <button
@@ -90,1018 +97,1034 @@
       </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <img
-        src="./images/star.svg"
-        alt="Star"
-        class="floating-star"
-        id="floatingStar"
-      />
-
-      <!-- Globe tournant -->
-      <div class="globe-container" id="globeContainer">
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
         <img
-          src="./images/terra.webp"
-          alt="Globe"
-          class="rotating-globe"
-          id="rotatingGlobe"
-          fetchpriority="high"
+          src="./images/star.svg"
+          alt="Star"
+          class="floating-star"
+          id="floatingStar"
         />
-      </div>
 
-      <h1 class="hero-title" id="heroTitle">
-        <div class="title-line">
-          <span class="word">Développement</span>
-          <span class="word">Web</span>
-        </div>
-        <div class="title-line">
-          <span class="word">dans</span>
-          <span class="word">le</span>
-          <span class="word">Puy-de-Dôme</span>
-        </div>
-      </h1>
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <div class="arrow-down"></div>
-      </div>
-    </section>
-
-    <!-- Section À Propos -->
-    <section class="about-section" id="about">
-      <!-- Éléments animés flottants -->
-      <div class="floating-elements" id="pluginsWrap">
-        <img
-          src="./images/terra.webp"
-          alt="Globe"
-          class="float-globe"
-          loading="lazy"
-        />
-        <div class="float-circle circle-1"></div>
-        <div class="float-circle circle-2"></div>
-        <div class="float-shape shape-o">O</div>
-      </div>
-
-      <div class="container">
-        <h2 class="section-title" data-scroll>À Propos</h2>
-        <div class="about-content">
-          <div class="about-text" data-scroll>
-            <p class="reveal-text">
-              Je suis Carole, développeuse web passionnée, je crée des
-              expériences numériques modernes et performantes. J'aime les
-              animations web et les interfaces interactives.
-            </p>
-            <p class="reveal-text">
-              Basée dans le Puy-de-Dôme, je travaille avec des technologies de
-              pointe pour donner vie à vos projets digitaux.
-            </p>
-          </div>
-          <div class="about-stats" data-scroll>
-            <div class="stat-item">
-              <span class="stat-number" data-target="2">0</span>
-              <span class="stat-label">Années d'expérience</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="50">0</span>
-              <span class="stat-label">Repositories Github</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="2">0</span>
-              <span class="stat-label"
-                >Compétences : Conception graphique et développement web</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Animation Ver et Cercle 3D -->
-    <section class="worm-animation-section">
-      <div class="worm-text-content">
-        <h2>Graphisme et Développement Web</h2>
-        <p>
-          Plongez dans une expérience interactive où graphisme et développement
-          web révèlent une création unique et infinie.
-        </p>
-      </div>
-      <div class="worm-wrap">
-        <!-- SVG du chemin que le cercle va suivre -->
-        <svg
-          class="worm-path-svg"
-          width="400"
-          height="900"
-          viewBox="0 0 150 450"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <lineargradient
-              id="wormGradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0%" class="worm-stop-1" />
-              <stop offset="20%" class="worm-stop-2" />
-              <stop offset="40%" class="worm-stop-3" />
-              <stop offset="60%" class="worm-stop-4" />
-              <stop offset="80%" class="worm-stop-3" />
-              <stop offset="100%" class="worm-stop-1" />
-            </lineargradient>
-          </defs>
-          <!-- Ombre pour donner du volume -->
-          <path
-            d="M 75,20 C 50,80 100,140 75,200 C 50,260 100,320 75,380 C 50,420 75,440 75,450"
-            fill="none"
-            stroke="#6a1b9a"
-            stroke-width="32"
-            stroke-linecap="round"
-            opacity="0.3"
+        <!-- Globe tournant -->
+        <div class="globe-container" id="globeContainer">
+          <img
+            src="./images/terra.webp"
+            alt="Globe"
+            class="rotating-globe"
+            id="rotatingGlobe"
+            fetchpriority="high"
           />
-          <!-- Couche principale avec dégradé -->
-          <path
-            id="wormPath"
-            d="M 75,20 C 50,80 100,140 75,200 C 50,260 100,320 75,380 C 50,420 75,440 75,450"
-            fill="none"
-            stroke="url(#wormGradient)"
-            stroke-width="30"
-            stroke-linecap="round"
+        </div>
+
+        <h1 class="hero-title" id="heroTitle">
+          <div class="title-line">
+            <span class="word">Développement</span>
+            <span class="word">Web</span>
+          </div>
+          <div class="title-line">
+            <span class="word">dans</span>
+            <span class="word">le</span>
+            <span class="word">Puy-de-Dôme</span>
+          </div>
+        </h1>
+        <div class="scroll-indicator">
+          <span>Scroll</span>
+          <div class="arrow-down"></div>
+        </div>
+      </section>
+
+      <!-- Section À Propos -->
+      <section class="about-section" id="about">
+        <!-- Éléments animés flottants -->
+        <div class="floating-elements" id="pluginsWrap">
+          <img
+            src="./images/terra.webp"
+            alt="Globe"
+            class="float-globe"
+            loading="lazy"
           />
-        </svg>
+          <div class="float-circle circle-1"></div>
+          <div class="float-circle circle-2"></div>
+          <div class="float-shape shape-o">O</div>
+        </div>
 
-        <!-- Cercle 3D qui va suivre le chemin -->
-        <div class="circle-3d" id="movingCircle"></div>
-      </div>
-    </section>
-
-    <!-- Section Projets -->
-    <section class="projects-section" id="projects">
-      <div class="container">
-        <h2 class="section-title" data-scroll>Projets</h2>
-
-        <!-- Project items avec animation horizontale -->
-        <div class="mesmerising-projects">
-          <div class="project-item">
-            <div class="project-visual">
-              <div class="project-number">01</div>
-              <div class="project-image-wrapper">
-                <div class="project-reveal-image"></div>
-              </div>
-            </div>
-            <div class="project-content">
-              <h3>Que Za Quo</h3>
-              <p>Application connectée à l'API Open Food Facts</p>
-              <div class="project-tech">
-                <span>Next.js</span>
-                <span>Typescript</span>
-                <span>Node.js</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/Caro639/nextjs-api-food"
-                  target="_blank"
-                  rel="noopener"
-                  referrerpolicy="no-referrer"
-                  class="project-btn"
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
-                    />
-                  </svg>
-                  GitHub
-                </a>
-                <a
-                  href="https://nextjs-api-food.vercel.app"
-                  target="_blank"
-                  rel="noopener"
-                  referrerpolicy="no-referrer"
-                  class="project-btn"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"
-                    />
-                  </svg>
-                  Live Demo
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-item">
-            <div class="project-visual">
-              <div class="project-number">02</div>
-              <div class="project-image-wrapper">
-                <div class="project-reveal-image"></div>
-              </div>
-            </div>
-            <div class="project-content">
-              <h3>Blog HelloRecettes</h3>
-              <p>Blog communautaire de partage de recettes + API</p>
-              <div class="project-tech">
-                <span>Symfony</span>
-                <span>ApiPlatform</span>
-                <span>Bootstrap</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/Caro639/HelloRecettes"
-                  target="_blank"
-                  rel="noopener"
-                  referrerpolicy="no-referrer"
-                  class="project-btn"
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
-                    />
-                  </svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-item">
-            <div class="project-visual">
-              <div class="project-number">03</div>
-              <div class="project-image-wrapper">
-                <div class="project-reveal-image"></div>
-              </div>
-            </div>
-            <div class="project-content">
-              <h3>E-Commerce PauseCafé</h3>
-              <p>E-commerce de vente de café en ligne</p>
-              <div class="project-tech">
-                <span>Symfony</span>
-                <span>Stripe</span>
-                <span>Bootstrap</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/Caro639/pausecafe"
-                  target="_blank"
-                  rel="noopener"
-                  referrerpolicy="no-referrer"
-                  class="project-btn"
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
-                    />
-                  </svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-item">
-            <div class="project-visual">
-              <div class="project-number">04</div>
-              <div class="project-image-wrapper">
-                <div class="project-reveal-image"></div>
-              </div>
-            </div>
-            <div class="project-content">
-              <h3>Blog Révélations</h3>
-              <p>
-                Blog de partage d'astuces profesionnelles et commentaires + like
+        <div class="container">
+          <h2 class="section-title" data-scroll>À Propos</h2>
+          <div class="about-content">
+            <div class="about-text" data-scroll>
+              <p class="reveal-text">
+                Je suis Carole, développeuse web passionnée, je crée des
+                expériences numériques modernes et performantes. J'aime les
+                animations web et les interfaces interactives.
               </p>
-              <div class="project-tech">
-                <span>Symfony</span>
-                <span>Ajax</span>
-                <span>Bootstrap</span>
+              <p class="reveal-text">
+                Basée dans le Puy-de-Dôme, je travaille avec des technologies de
+                pointe pour donner vie à vos projets digitaux.
+              </p>
+            </div>
+            <div class="about-stats" data-scroll>
+              <div class="stat-item">
+                <span class="stat-number" data-target="2">0</span>
+                <span class="stat-label">Années d'expérience</span>
               </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/Caro639/Blog-R-v-lations"
-                  target="_blank"
-                  rel="noopener"
-                  referrerpolicy="no-referrer"
-                  class="project-btn"
+              <div class="stat-item">
+                <span class="stat-number" data-target="50">0</span>
+                <span class="stat-label">Repositories Github</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" data-target="2">0</span>
+                <span class="stat-label"
+                  >Compétences : Conception graphique et développement web</span
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
-                    />
-                  </svg>
-                  GitHub
-                </a>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Section Compétences -->
-    <section class="skills-section" id="skills">
-      <div class="container-fluid">
-        <h2 class="section-title" data-scroll>Compétences</h2>
-
-        <!-- Wrapper horizontal pour scroll -->
-        <div class="skills-horizontal-wrapper">
-          <div class="skills-horizontal-container">
-            <!-- Skill Card 1 -->
-            <div class="skill-card">
-              <div class="skill-card-header">
-                <span class="skill-number">01</span>
-                <h3>Frontend</h3>
-              </div>
-              <div class="skill-card-content">
-                <div class="skill-item-modern">
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#ad45c6"
-                    width="45"
-                    height="45"
-                  >
-                    <title>HTML</title>
-                    <path
-                      d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">HTML/CSS</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-item-modern">
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#ad45c6"
-                    width="45"
-                    height="45"
-                  >
-                    <title>JavaScript</title>
-                    <path
-                      d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">JavaScript</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-item-modern">
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#ad45c6"
-                    width="45"
-                    height="45"
-                  >
-                    <title>React</title>
-                    <path
-                      d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">React</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Skill Card 2 -->
-            <div class="skill-card">
-              <div class="skill-card-header">
-                <span class="skill-number">02</span>
-                <h3>Animations</h3>
-              </div>
-              <div class="skill-card-content">
-                <div class="skill-item-modern">
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#ad45c6"
-                    width="55"
-                    height="55"
-                  >
-                    <title>GSAP</title>
-                    <path
-                      d="M9.83,7.59C10.647,7.595 11.267,7.828 11.672,8.282C12.055,8.713 12.239,9.336 12.219,10.132L12.205,10.193C12.197,10.211 12.185,10.229 12.17,10.243C12.14,10.272 12.099,10.288 12.057,10.288L10.398,10.288C10.29,10.288 10.199,10.2 10.199,10.093C10.199,9.669 10.071,9.435 9.809,9.383L9.689,9.372C9.347,9.372 9.125,9.583 9.119,9.951C9.112,10.361 9.344,10.734 10.004,11.374C10.872,12.19 11.221,12.913 11.204,13.867C11.177,15.411 10.127,16.41 8.531,16.41C7.716,16.41 7.093,16.191 6.678,15.761C6.258,15.324 6.066,14.683 6.106,13.855C6.108,13.813 6.125,13.772 6.155,13.743C6.185,13.714 6.226,13.698 6.267,13.698L7.983,13.698C8.007,13.699 8.03,13.705 8.052,13.715C8.073,13.726 8.092,13.741 8.107,13.76C8.12,13.775 8.129,13.793 8.135,13.813C8.14,13.832 8.141,13.853 8.137,13.873C8.118,14.171 8.171,14.394 8.288,14.518C8.363,14.598 8.469,14.639 8.599,14.639C8.916,14.639 9.102,14.414 9.109,14.024C9.115,13.687 9.007,13.39 8.427,12.792C7.676,12.058 7.003,11.3 7.024,10.108C7.037,9.416 7.311,8.784 7.798,8.327C8.312,7.845 9.014,7.59 9.83,7.59ZM4.047,7.618C4.794,7.612 5.381,7.842 5.789,8.303C6.221,8.79 6.44,9.524 6.441,10.485C6.44,10.527 6.422,10.567 6.392,10.597C6.362,10.626 6.322,10.643 6.28,10.643L4.479,10.643C4.448,10.642 4.417,10.629 4.395,10.607C4.373,10.584 4.361,10.553 4.36,10.522C4.346,9.899 4.172,9.576 3.828,9.538L3.757,9.534C3.067,9.535 2.66,10.472 2.444,10.992C2.142,11.719 1.988,12.507 2.018,13.293C2.033,13.659 2.092,14.173 2.438,14.386C2.746,14.575 3.185,14.45 3.451,14.24C3.716,14.031 3.93,13.669 4.02,13.339C4.033,13.293 4.033,13.258 4.021,13.241C4.015,13.233 4.003,13.229 3.989,13.226L3.485,13.222C3.461,13.222 3.436,13.216 3.414,13.206C3.392,13.196 3.372,13.181 3.356,13.162C3.344,13.148 3.335,13.13 3.331,13.112C3.327,13.093 3.327,13.074 3.331,13.056L3.647,11.682C3.663,11.611 3.726,11.558 3.804,11.548L3.804,11.545L6.839,11.545C6.846,11.545 6.854,11.545 6.86,11.546C6.939,11.556 6.995,11.63 6.994,11.71L6.994,11.714L6.678,13.085C6.661,13.163 6.583,13.22 6.494,13.22L6.113,13.22C6.1,13.22 6.086,13.225 6.075,13.233C6.064,13.241 6.056,13.253 6.052,13.266C5.7,14.46 5.223,15.282 4.594,15.775C4.058,16.195 3.399,16.391 2.517,16.391C1.725,16.391 1.191,16.136 0.738,15.633C0.14,14.967 -0.107,13.879 0.043,12.566C0.313,10.103 1.589,7.618 4.047,7.618ZM21.016,7.75C23.026,7.75 24.03,8.662 23.999,10.461C23.962,12.569 22.678,14.119 20.745,14.477C20.47,14.527 20.191,14.547 19.912,14.545L18.978,14.541C18.963,14.541 18.948,14.547 18.937,14.558C18.926,14.568 18.92,14.583 18.92,14.598C18.92,14.608 18.922,14.618 18.928,14.627C18.933,14.636 18.941,14.643 18.95,14.648L19.744,15.062C19.809,15.096 19.835,15.153 19.82,15.226C19.815,15.249 19.618,16.139 19.613,16.159C19.596,16.237 19.533,16.282 19.442,16.282L17.739,16.282C17.715,16.282 17.69,16.277 17.668,16.267C17.646,16.257 17.626,16.241 17.61,16.223C17.598,16.208 17.589,16.191 17.585,16.173C17.58,16.155 17.581,16.135 17.585,16.116L19.481,7.875C19.5,7.789 19.581,7.751 19.653,7.751L21.016,7.75ZM17.273,7.762C17.292,7.77 17.31,7.781 17.324,7.795C17.338,7.81 17.351,7.828 17.358,7.847C17.366,7.866 17.369,7.886 17.369,7.906L17.358,16.119C17.361,16.138 17.36,16.158 17.355,16.177C17.35,16.196 17.34,16.213 17.328,16.228C17.313,16.245 17.295,16.259 17.274,16.268C17.254,16.277 17.232,16.282 17.21,16.281L15.397,16.281C15.377,16.282 15.356,16.277 15.337,16.27C15.318,16.262 15.3,16.25 15.286,16.236C15.272,16.221 15.26,16.204 15.253,16.185C15.245,16.166 15.241,16.146 15.241,16.125L15.28,15.328C15.282,15.241 15.28,15.217 15.229,15.211L15.161,15.209L13.447,15.209C13.323,15.209 13.314,15.22 13.27,15.334L12.914,16.191C12.882,16.252 12.818,16.281 12.722,16.281L10.927,16.281C10.818,16.281 10.74,16.173 10.781,16.072L14.499,7.873C14.524,7.824 14.562,7.75 14.648,7.75L17.214,7.75C17.234,7.75 17.254,7.754 17.273,7.762ZM15.5,9.985C15.492,9.953 15.466,9.956 15.445,9.998C15.43,10.028 15.416,10.06 15.405,10.091L14.121,13.274C14.114,13.294 14.109,13.31 14.105,13.322C14.104,13.328 14.103,13.335 14.104,13.341C14.105,13.347 14.108,13.353 14.111,13.358C14.115,13.363 14.12,13.367 14.126,13.37C14.131,13.373 14.137,13.376 14.143,13.376L15.215,13.39C15.334,13.38 15.34,13.374 15.352,13.253C15.354,13.21 15.506,10.022 15.5,9.985ZM20.112,9.582C20.097,9.582 20.083,9.588 20.072,9.599C20.061,9.609 20.055,9.624 20.054,9.639C20.054,9.649 20.057,9.659 20.062,9.668C20.068,9.677 20.075,9.685 20.084,9.69C20.097,9.697 20.869,10.104 20.926,10.135C20.968,10.158 20.969,10.198 20.955,10.267C20.948,10.298 20.415,12.642 20.416,12.644C20.419,12.647 20.435,12.655 20.515,12.655L20.551,12.655C21.446,12.619 21.934,11.561 21.952,10.534C21.961,9.979 21.772,9.638 21.429,9.588L21.358,9.582L20.112,9.582Z"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">GSAP</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-item-modern">
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#ad45c6"
-                    width="55"
-                    height="55"
-                  >
-                    <title>Three.js</title>
-                    <path
-                      d="M.38 0a.268.268 0 0 0-.256.332l2.894 11.716a.268.268 0 0 0 .01.04l2.89 11.708a.268.268 0 0 0 .447.128L23.802 7.15a.268.268 0 0 0-.112-.45l-5.784-1.667a.268.268 0 0 0-.123-.035L6.38 1.715a.268.268 0 0 0-.144-.04L.456.01A.268.268 0 0 0 .38 0zm.374.654L5.71 2.08 1.99 5.664zM6.61 2.34l4.864 1.4-3.65 3.515zm-.522.12l1.217 4.926-4.877-1.4zm6.28 1.538l4.878 1.404-3.662 3.53zm-.52.13l1.208 4.9-4.853-1.392zm6.3 1.534l4.947 1.424-3.715 3.574zm-.524.12l1.215 4.926-4.876-1.398zm-15.432.696l4.964 1.424-3.726 3.586zM8.047 8.15l4.877 1.4-3.66 3.527zm-.518.137l1.236 5.017-4.963-1.432zm6.274 1.535l4.965 1.425-3.73 3.586zm-.52.127l1.235 5.012-4.958-1.43zm-9.63 2.438l4.873 1.406-3.656 3.523zm5.854 1.687l4.863 1.403-3.648 3.51zm-.54.04l1.214 4.927-4.875-1.4zm-3.896 4.02l5.037 1.442-3.782 3.638z"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">Three.js</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-item-modern">
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#ad45c6"
-                    width="45"
-                    height="45"
-                  >
-                    <title>SVG</title>
-                    <path
-                      d="M12 0c-1.497 0-2.749.965-3.248 2.17a3.45 3.45 0 00-.238 1.416 3.459 3.459 0 00-1.168-.834 3.508 3.508 0 00-1.463-.256 3.513 3.513 0 00-2.367 1.02c-1.06 1.058-1.263 2.625-.764 3.83.179.432.47.82.82 1.154a3.49 3.49 0 00-1.402.252C.965 9.251 0 10.502 0 12c0 1.497.965 2.749 2.17 3.248.437.181.924.25 1.414.236-.357.338-.65.732-.832 1.17-.499 1.205-.295 2.772.764 3.83 1.058 1.06 2.625 1.263 3.83.764.437-.181.83-.476 1.168-.832-.014.49.057.977.238 1.414C9.251 23.035 10.502 24 12 24c1.497 0 2.749-.965 3.248-2.17a3.45 3.45 0 00.238-1.416c.338.356.73.653 1.168.834 1.205.499 2.772.295 3.83-.764 1.06-1.058 1.263-2.625.764-3.83a3.459 3.459 0 00-.834-1.168 3.45 3.45 0 001.416-.238C23.035 14.749 24 13.498 24 12c0-1.497-.965-2.749-2.17-3.248a3.455 3.455 0 00-1.414-.236c.357-.338.65-.732.832-1.17.499-1.205.295-2.772-.764-3.83a3.513 3.513 0 00-2.367-1.02 3.508 3.508 0 00-1.463.256c-.437.181-.83.475-1.168.832a3.45 3.45 0 00-.238-1.414C14.749.965 13.498 0 12 0zm-.041 1.613a1.902 1.902 0 011.387 3.246v3.893L16.098 6A1.902 1.902 0 1118 7.902l-2.752 2.752h3.893a1.902 1.902 0 110 2.692h-3.893L18 16.098A1.902 1.902 0 1116.098 18l-2.752-2.752v3.893a1.902 1.902 0 11-2.692 0v-3.893L7.902 18A1.902 1.902 0 116 16.098l2.752-2.752H4.859a1.902 1.902 0 110-2.692h3.893L6 7.902A1.902 1.902 0 117.902 6l2.752 2.752V4.859a1.902 1.902 0 011.305-3.246z"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">SVG Animation</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Skill Card 3 -->
-            <div class="skill-card">
-              <div class="skill-card-header">
-                <span class="skill-number">03</span>
-                <h3>Backend</h3>
-              </div>
-              <div class="skill-card-content">
-                <div class="skill-item-modern">
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#ad45c6"
-                    width="45"
-                    height="45"
-                  >
-                    <title>Symfony</title>
-                    <path
-                      d="M24 12c0 6.628-5.372 12-12 12S0 18.628 0 12 5.372 0 12 0s12 5.372 12 12zm-6.753-7.561c-1.22.042-2.283.715-3.075 1.644-.878 1.02-1.461 2.229-1.881 3.461-.753-.614-1.332-1.414-2.539-1.761-.966-.297-2.015-.105-2.813.514-.41.319-.71.757-.861 1.254-.36 1.176.381 2.225.719 2.6l.737.79c.15.154.519.56.339 1.138-.193.631-.951 1.037-1.732.799-.348-.106-.848-.366-.734-.73.045-.15.152-.263.21-.391.052-.11.077-.194.095-.242.141-.465-.053-1.07-.551-1.223-.465-.143-.939-.03-1.125.566-.209.68.117 1.913 1.86 2.449 2.04.628 3.765-.484 4.009-1.932.153-.907-.255-1.582-1.006-2.447l-.612-.677c-.371-.37-.497-1.002-.114-1.485.324-.409.785-.584 1.539-.379 1.103.3 1.594 1.063 2.412 1.68-.338 1.11-.56 2.223-.759 3.222l-.123.746c-.585 3.07-1.033 4.757-2.194 5.726-.234.166-.57.416-1.073.434-.266.005-.352-.176-.355-.257-.006-.184.15-.271.255-.353.154-.083.39-.224.372-.674-.016-.532-.456-.994-1.094-.973-.477.017-1.203.465-1.176 1.286.028.85.819 1.485 2.012 1.444.638-.021 2.062-.281 3.464-1.949 1.633-1.911 2.09-4.101 2.434-5.706l.383-2.116c.213.024.441.042.69.048 2.032.044 3.049-1.01 3.064-1.776.01-.464-.304-.921-.744-.91-.386.009-.718.278-.806.654-.094.428.646.813.068 1.189-.41.266-1.146.452-2.184.3l.188-1.042c.386-1.976.859-4.407 2.661-4.467.132-.007.612.006.623.323.003.105-.022.134-.147.375-.115.155-.174.345-.168.537.017.504.4.836.957.816.743-.023.955-.748.945-1.119-.032-.874-.952-1.424-2.17-1.386z"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">Symfony</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-item-modern">
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#ad45c6"
-                    width="45"
-                    height="45"
-                  >
-                    <title>Node.js</title>
-                    <path
-                      d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">Node.js</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-item-modern">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="#ad45c6"
-                    width="45"
-                    height="45"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M3 4h4v16H3V4zm6 0h4v16H9V4zm6 0h4v16h-4V4z" />
-                    <path
-                      d="M21 11h-3v2h3v-2zm-6 0h-3v2h3v-2zm-6 0H6v2h3v-2z"
-                      opacity="0.5"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">API REST</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Skill Card 4 -->
-            <div class="skill-card">
-              <div class="skill-card-header">
-                <span class="skill-number">04</span>
-                <h3>Tools</h3>
-              </div>
-              <div class="skill-card-content">
-                <div class="skill-item-modern">
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#ad45c6"
-                    width="45"
-                    height="45"
-                  >
-                    <title>GitHub</title>
-                    <path
-                      d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">GitHub</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-item-modern">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 100.06 99.48"
-                    width="45"
-                    height="45"
-                  >
-                    <defs>
-                      <mask
-                        id="mask"
-                        x="0"
-                        y="0"
-                        width="100.06"
-                        height="99.48"
-                        maskUnits="userSpaceOnUse"
-                      >
-                        <g transform="translate(0.06 -0.26)">
-                          <g id="mask0">
-                            <path
-                              d="M70.91,99.32a6.26,6.26,0,0,0,5-.19l20.59-9.91A6.25,6.25,0,0,0,100,83.59V16.41a6.25,6.25,0,0,0-3.54-5.63L75.87.87a6.24,6.24,0,0,0-6.36.58,6.32,6.32,0,0,0-.74.63L29.36,38,12.19,25a4.17,4.17,0,0,0-5.32.24l-5.51,5a4.18,4.18,0,0,0,0,6.17L16.25,50,1.36,63.58a4.18,4.18,0,0,0,0,6.17l5.51,5a4.17,4.17,0,0,0,5.32.24L29.36,62l39.41,36A6.25,6.25,0,0,0,70.91,99.32ZM75,27.3,45.11,50,75,72.7Z"
-                              fill="#fff"
-                              fill-rule="evenodd"
-                            />
-                          </g>
-                        </g>
-                      </mask>
-                      <lineargradient
-                        id="Dégradé_sansnom"
-                        x1="49.94"
-                        y1="101.74"
-                        x2="49.94"
-                        y2="2.26"
-                        gradientTransform="matrix(1, 0, 0, -1, 0, 102)"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop offset="0" stop-color="#fff" />
-                        <stop offset="1" stop-color="#fff" stop-opacity="0" />
-                      </lineargradient>
-                    </defs>
-                    <g mask="url(#mask)">
-                      <path
-                        d="M96.46,10.8,75.86.88a6.23,6.23,0,0,0-7.11,1.2L1.3,63.58a4.18,4.18,0,0,0,0,6.17l5.51,5a4.17,4.17,0,0,0,5.32.24L93.36,13.37a4.14,4.14,0,0,1,6.64,3.3v-.24A6.25,6.25,0,0,0,96.46,10.8Z"
-                        transform="translate(0.06 -0.26)"
-                        fill="#ad45c6"
-                      />
-                      <path
-                        d="M96.46,89.2l-20.6,9.92a6.23,6.23,0,0,1-7.11-1.2L1.3,36.42a4.18,4.18,0,0,1,0-6.17l5.51-5A4.17,4.17,0,0,1,12.13,25L93.36,86.63a4.14,4.14,0,0,0,6.64-3.3v.24A6.25,6.25,0,0,1,96.46,89.2Z"
-                        transform="translate(0.06 -0.26)"
-                        fill="#ad45c6"
-                      />
-                      <path
-                        d="M75.86,99.13a6.25,6.25,0,0,1-7.11-1.21A3.66,3.66,0,0,0,75,95.33V4.67a3.66,3.66,0,0,0-6.25-2.59A6.25,6.25,0,0,1,75.86.87l20.6,9.91A6.25,6.25,0,0,1,100,16.41V83.59a6.25,6.25,0,0,1-3.54,5.63Z"
-                        transform="translate(0.06 -0.26)"
-                        fill="#ad45c6"
-                      />
-                      <g opacity="0.25">
-                        <path
-                          d="M70.85,99.32a6.26,6.26,0,0,0,5-.19L96.4,89.22a6.25,6.25,0,0,0,3.54-5.63V16.41a6.25,6.25,0,0,0-3.54-5.63L75.81.87a6.24,6.24,0,0,0-6.36.58,6.32,6.32,0,0,0-.74.63L29.29,38,12.13,25a4.17,4.17,0,0,0-5.32.24l-5.51,5a4.18,4.18,0,0,0,0,6.17L16.19,50,1.3,63.58a4.18,4.18,0,0,0,0,6.17l5.51,5a4.17,4.17,0,0,0,5.32.24L29.29,62l39.42,36A6.25,6.25,0,0,0,70.85,99.32Zm4.1-72L45.05,50,75,72.7Z"
-                          transform="translate(0.06 -0.26)"
-                          fill-rule="evenodd"
-                          fill="url(#Dégradé_sans_nom)"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">VS Code</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-item-modern">
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#ad45c6"
-                    width="45"
-                    height="45"
-                  >
-                    <title>Webpack</title>
-                    <path
-                      d="M22.1987 18.498l-9.7699 5.5022v-4.2855l6.0872-3.3338 3.6826 2.117zm.6683-.6026V6.3884l-3.5752 2.0544v7.396zm-21.0657.6026l9.7699 5.5022v-4.2855L5.484 16.3809l-3.6826 2.117zm-.6683-.6026V6.3884l3.5751 2.0544v7.396zm.4183-12.2515l10.0199-5.644v4.1434L5.152 7.6586l-.0489.028zm20.8975 0l-10.02-5.644v4.1434l6.4192 3.5154.0489.028 3.5518-2.0427zm-10.8775 13.096l-6.0056-3.2873V8.9384l6.0054 3.4525v6.349zm.8575 0l6.0053-3.2873V8.9384l-6.0053 3.4525zM5.9724 8.1845l6.0287-3.3015L18.03 8.1845l-6.0288 3.4665z"
-                    />
-                  </svg>
-                  <div class="skill-info">
-                    <span class="skill-name">Webpack</span>
-                    <div class="skill-level">
-                      <div class="skill-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- Animation Ver et Cercle 3D -->
+      <section class="worm-animation-section">
+        <div class="worm-text-content">
+          <h2>Graphisme et Développement Web</h2>
+          <p>
+            Plongez dans une expérience interactive où graphisme et
+            développement web révèlent une création unique et infinie.
+          </p>
         </div>
-      </div>
-    </section>
-
-    <!-- Section Contact -->
-    <section class="contact-section" id="contact">
-      <!-- Ver compact à droite -->
-      <div class="worm-wrap-contact">
-        <svg
-          class="worm-path-svg-contact"
-          width="300"
-          height="600"
-          viewBox="0 0 150 300"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <lineargradient
-              id="wormGradientContact"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0%" class="worm-stop-1" />
-              <stop offset="20%" class="worm-stop-2" />
-              <stop offset="40%" class="worm-stop-3" />
-              <stop offset="60%" class="worm-stop-4" />
-              <stop offset="80%" class="worm-stop-3" />
-              <stop offset="100%" class="worm-stop-1" />
-            </lineargradient>
-          </defs>
-          <!-- Ombre pour donner du volume -->
-          <path
-            d="M 75,20 C 50,60 100,100 75,140 C 50,180 100,220 75,260 C 60,280 75,290 75,300"
-            fill="none"
-            stroke="#6a1b9a"
-            stroke-width="32"
-            stroke-linecap="round"
-            opacity="0.3"
-          />
-          <!-- Couche principale avec dégradé -->
-          <path
-            id="wormPathContact"
-            d="M 75,20 C 50,60 100,100 75,140 C 50,180 100,220 75,260 C 60,280 75,290 75,300"
-            fill="none"
-            stroke="url(#wormGradientContact)"
-            stroke-width="30"
-            stroke-linecap="round"
-          />
-        </svg>
-        <div class="circle-3d-contact" id="movingCircleContact"></div>
-        <div class="black-hole" id="blackHole">
-          <svg width="100" height="100" viewBox="0 0 100 100">
+        <div class="worm-wrap">
+          <!-- SVG du chemin que le cercle va suivre -->
+          <svg
+            class="worm-path-svg"
+            width="400"
+            height="900"
+            viewBox="0 0 150 450"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <defs>
-              <radialgradient id="holeGradient">
-                <stop offset="0%" stop-color="rgb(0, 0, 0); stop-opacity: 0" />
-                <stop
-                  offset="40%"
-                  stop-color="rgb(173, 69, 198)"
-                  stop-opacity="0.3"
-                />
-                <stop
-                  offset="70%"
-                  stop-color="rgb(173, 69, 198)"
-                  stop-opacity="0.6"
-                />
-                <stop
-                  offset="100%"
-                  stop-color="rgb(173, 69, 198)"
-                  stop-opacity="0"
-                />
-              </radialgradient>
+              <lineargradient
+                id="wormGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0%" class="worm-stop-1" />
+                <stop offset="20%" class="worm-stop-2" />
+                <stop offset="40%" class="worm-stop-3" />
+                <stop offset="60%" class="worm-stop-4" />
+                <stop offset="80%" class="worm-stop-3" />
+                <stop offset="100%" class="worm-stop-1" />
+              </lineargradient>
             </defs>
-            <circle cx="50" cy="50" r="45" fill="url(#holeGradient)" />
+            <!-- Ombre pour donner du volume -->
+            <path
+              d="M 75,20 C 50,80 100,140 75,200 C 50,260 100,320 75,380 C 50,420 75,440 75,450"
+              fill="none"
+              stroke="#6a1b9a"
+              stroke-width="32"
+              stroke-linecap="round"
+              opacity="0.3"
+            />
+            <!-- Couche principale avec dégradé -->
+            <path
+              id="wormPath"
+              d="M 75,20 C 50,80 100,140 75,200 C 50,260 100,320 75,380 C 50,420 75,440 75,450"
+              fill="none"
+              stroke="url(#wormGradient)"
+              stroke-width="30"
+              stroke-linecap="round"
+            />
           </svg>
+
+          <!-- Cercle 3D qui va suivre le chemin -->
+          <div class="circle-3d" id="movingCircle"></div>
         </div>
-      </div>
-      <div class="container">
-        <h2 class="section-title" data-scroll>Contact</h2>
-        <div class="contact-content">
-          <div class="contact-info" data-scroll>
-            <h3>Travaillons ensemble</h3>
-            <p>
-              Un projet en tête ? N'hésitez pas à me contacter pour en discuter.
-            </p>
-            <div class="contact-details">
-              <div class="contact-item">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 88.53 44"
-                  width="28"
-                  height="28"
-                >
-                  <path
-                    d="M96.75,38.06a.71.71,0,0,0-.21,0s0,0-.08,0H30.11L30,38a.59.59,0,0,0-.2,0,2.76,2.76,0,0,0-2.5,2.73V79.21A2.79,2.79,0,0,0,30.13,82H96.48a2.79,2.79,0,0,0,2.8-2.79V40.79a2.8,2.8,0,0,0-2.52-2.73Zm-3.46,2-30,22.13-30-22.13ZM29.83,79.85a.68.68,0,0,1-.42-.64V40.79a.7.7,0,0,1,.44-.64L55.71,59.21Zm3.25.07L57.44,60.48l5.23,3.85a1.05,1.05,0,0,0,.62.21,1,1,0,0,0,.63-.21l5.23-3.85L93.5,79.92Zm64.09-.71a.7.7,0,0,1-.42.64L70.88,59.21,96.73,40.14a.72.72,0,0,1,.44.65Z"
-                    transform="translate(-10.75 -38)"
-                    fill="#ad45c6"
-                  />
-                  <path
-                    d="M17.6,52.31h7.77a1,1,0,1,0,0-2.08H17.61a1,1,0,0,0-1.05,1A1,1,0,0,0,17.6,52.31Z"
-                    transform="translate(-10.75 -38)"
-                    fill="#ad45c6"
-                  />
-                  <path
-                    d="M15.67,58.12h9.71a1,1,0,1,0,0-2.08H15.67a1,1,0,0,0-1.05,1.05A1,1,0,0,0,15.67,58.12Z"
-                    transform="translate(-10.75 -38)"
-                    fill="#ad45c6"
-                  />
-                  <path
-                    d="M26.42,62.92a1,1,0,0,0-1-1H11.79a1,1,0,1,0,0,2.08H25.38A1,1,0,0,0,26.42,62.92Z"
-                    transform="translate(-10.75 -38)"
-                    fill="#ad45c6"
-                  />
-                  <path
-                    d="M25.38,67.69H17.61a1,1,0,1,0,0,2.08h7.77a1,1,0,0,0,0-2.08Z"
-                    transform="translate(-10.75 -38)"
-                    fill="#ad45c6"
-                  />
-                </svg>
-                <span>werner.carole7@gmail.com</span>
+      </section>
+
+      <!-- Section Projets -->
+      <section class="projects-section" id="projects">
+        <div class="container">
+          <h2 class="section-title" data-scroll>Projets</h2>
+
+          <!-- Project items avec animation horizontale -->
+          <div class="mesmerising-projects">
+            <div class="project-item">
+              <div class="project-visual">
+                <div class="project-number">01</div>
+                <div class="project-image-wrapper">
+                  <div class="project-reveal-image"></div>
+                </div>
               </div>
-              <div class="contact-item">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 18 28"
-                  fill="#ad45c6"
-                >
-                  <path
-                    d="M16,2A8.92,8.92,0,0,0,9.63,4.68,9.16,9.16,0,0,0,7,11.12v1.13a22.13,22.13,0,0,0,6.66,15.86h0l1.64,1.61a1,1,0,0,0,1.4,0l1.64-1.61h0A22.13,22.13,0,0,0,25,12.25V11.12a9.16,9.16,0,0,0-2.63-6.44A8.92,8.92,0,0,0,16,2Zm0,2a6.94,6.94,0,0,1,4.94,2.08h0a7.21,7.21,0,0,1,2.05,5v1.13A20.18,20.18,0,0,1,17,26.68L16,27.6l-.95-.92A20.18,20.18,0,0,1,9,12.25V11.12a7.21,7.21,0,0,1,2.05-5h0A6.94,6.94,0,0,1,16,4Z"
-                    transform="translate(-7 -2)"
-                  />
-                  <path
-                    d="M16,7a4,4,0,1,0,4,4A4,4,0,0,0,16,7Zm0,2a2,2,0,1,1-2,2A2,2,0,0,1,16,9Z"
-                    transform="translate(-7 -2)"
-                  />
-                </svg>
-                <span>Puy-de-Dôme, France</span>
+              <div class="project-content">
+                <h3>Que Za Quo</h3>
+                <p>Application connectée à l'API Open Food Facts</p>
+                <div class="project-tech">
+                  <span>Next.js</span>
+                  <span>Typescript</span>
+                  <span>Node.js</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/Caro639/nextjs-api-food"
+                    aria-label="Découvrez le code source Que Za Quo sur GitHub"
+                    target="_blank"
+                    rel="noopener"
+                    referrerpolicy="no-referrer"
+                    class="project-btn"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                      />
+                    </svg>
+                    GitHub
+                  </a>
+                  <a
+                    href="https://nextjs-api-food.vercel.app"
+                    aria-label="Découvrez l'application Que Za Quo en ligne"
+                    target="_blank"
+                    rel="noopener"
+                    referrerpolicy="no-referrer"
+                    class="project-btn"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"
+                      />
+                    </svg>
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-visual">
+                <div class="project-number">02</div>
+                <div class="project-image-wrapper">
+                  <div class="project-reveal-image"></div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3>Blog HelloRecettes</h3>
+                <p>Blog communautaire de partage de recettes + API</p>
+                <div class="project-tech">
+                  <span>Symfony</span>
+                  <span>ApiPlatform</span>
+                  <span>Bootstrap</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/Caro639/HelloRecettes"
+                    aria-label="Découvrez le code source HelloRecettes sur GitHub"
+                    target="_blank"
+                    rel="noopener"
+                    referrerpolicy="no-referrer"
+                    class="project-btn"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                      />
+                    </svg>
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-visual">
+                <div class="project-number">03</div>
+                <div class="project-image-wrapper">
+                  <div class="project-reveal-image"></div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3>E-Commerce PauseCafé</h3>
+                <p>E-commerce de vente de café en ligne</p>
+                <div class="project-tech">
+                  <span>Symfony</span>
+                  <span>Stripe</span>
+                  <span>Bootstrap</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/Caro639/pausecafe"
+                    aria-label="Découvrez le code source PauseCafé sur GitHub"
+                    target="_blank"
+                    rel="noopener"
+                    referrerpolicy="no-referrer"
+                    class="project-btn"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                      />
+                    </svg>
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-visual">
+                <div class="project-number">04</div>
+                <div class="project-image-wrapper">
+                  <div class="project-reveal-image"></div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3>Blog Révélations</h3>
+                <p>
+                  Blog de partage d'astuces profesionnelles et commentaires +
+                  like
+                </p>
+                <div class="project-tech">
+                  <span>Symfony</span>
+                  <span>Ajax</span>
+                  <span>Bootstrap</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/Caro639/Blog-R-v-lations"
+                    aria-label="Découvrez le code source Révélations sur GitHub"
+                    target="_blank"
+                    rel="noopener"
+                    referrerpolicy="no-referrer"
+                    class="project-btn"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                      />
+                    </svg>
+                    GitHub
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <form class="contact-form" data-scroll id="contactForm">
-            <div class="form-group">
+        </div>
+      </section>
+
+      <!-- Section Compétences -->
+      <section class="skills-section" id="skills">
+        <div class="container-fluid">
+          <h2 class="section-title" data-scroll>Compétences</h2>
+
+          <!-- Wrapper horizontal pour scroll -->
+          <div class="skills-horizontal-wrapper">
+            <div class="skills-horizontal-container">
+              <!-- Skill Card 1 -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <span class="skill-number">01</span>
+                  <h3>Frontend</h3>
+                </div>
+                <div class="skill-card-content">
+                  <div class="skill-item-modern">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#ad45c6"
+                      width="45"
+                      height="45"
+                    >
+                      <title>HTML</title>
+                      <path
+                        d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">HTML/CSS</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-item-modern">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#ad45c6"
+                      width="45"
+                      height="45"
+                    >
+                      <title>JavaScript</title>
+                      <path
+                        d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">JavaScript</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-item-modern">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#ad45c6"
+                      width="45"
+                      height="45"
+                    >
+                      <title>React</title>
+                      <path
+                        d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">React</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skill Card 2 -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <span class="skill-number">02</span>
+                  <h3>Animations</h3>
+                </div>
+                <div class="skill-card-content">
+                  <div class="skill-item-modern">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#ad45c6"
+                      width="55"
+                      height="55"
+                    >
+                      <title>GSAP</title>
+                      <path
+                        d="M9.83,7.59C10.647,7.595 11.267,7.828 11.672,8.282C12.055,8.713 12.239,9.336 12.219,10.132L12.205,10.193C12.197,10.211 12.185,10.229 12.17,10.243C12.14,10.272 12.099,10.288 12.057,10.288L10.398,10.288C10.29,10.288 10.199,10.2 10.199,10.093C10.199,9.669 10.071,9.435 9.809,9.383L9.689,9.372C9.347,9.372 9.125,9.583 9.119,9.951C9.112,10.361 9.344,10.734 10.004,11.374C10.872,12.19 11.221,12.913 11.204,13.867C11.177,15.411 10.127,16.41 8.531,16.41C7.716,16.41 7.093,16.191 6.678,15.761C6.258,15.324 6.066,14.683 6.106,13.855C6.108,13.813 6.125,13.772 6.155,13.743C6.185,13.714 6.226,13.698 6.267,13.698L7.983,13.698C8.007,13.699 8.03,13.705 8.052,13.715C8.073,13.726 8.092,13.741 8.107,13.76C8.12,13.775 8.129,13.793 8.135,13.813C8.14,13.832 8.141,13.853 8.137,13.873C8.118,14.171 8.171,14.394 8.288,14.518C8.363,14.598 8.469,14.639 8.599,14.639C8.916,14.639 9.102,14.414 9.109,14.024C9.115,13.687 9.007,13.39 8.427,12.792C7.676,12.058 7.003,11.3 7.024,10.108C7.037,9.416 7.311,8.784 7.798,8.327C8.312,7.845 9.014,7.59 9.83,7.59ZM4.047,7.618C4.794,7.612 5.381,7.842 5.789,8.303C6.221,8.79 6.44,9.524 6.441,10.485C6.44,10.527 6.422,10.567 6.392,10.597C6.362,10.626 6.322,10.643 6.28,10.643L4.479,10.643C4.448,10.642 4.417,10.629 4.395,10.607C4.373,10.584 4.361,10.553 4.36,10.522C4.346,9.899 4.172,9.576 3.828,9.538L3.757,9.534C3.067,9.535 2.66,10.472 2.444,10.992C2.142,11.719 1.988,12.507 2.018,13.293C2.033,13.659 2.092,14.173 2.438,14.386C2.746,14.575 3.185,14.45 3.451,14.24C3.716,14.031 3.93,13.669 4.02,13.339C4.033,13.293 4.033,13.258 4.021,13.241C4.015,13.233 4.003,13.229 3.989,13.226L3.485,13.222C3.461,13.222 3.436,13.216 3.414,13.206C3.392,13.196 3.372,13.181 3.356,13.162C3.344,13.148 3.335,13.13 3.331,13.112C3.327,13.093 3.327,13.074 3.331,13.056L3.647,11.682C3.663,11.611 3.726,11.558 3.804,11.548L3.804,11.545L6.839,11.545C6.846,11.545 6.854,11.545 6.86,11.546C6.939,11.556 6.995,11.63 6.994,11.71L6.994,11.714L6.678,13.085C6.661,13.163 6.583,13.22 6.494,13.22L6.113,13.22C6.1,13.22 6.086,13.225 6.075,13.233C6.064,13.241 6.056,13.253 6.052,13.266C5.7,14.46 5.223,15.282 4.594,15.775C4.058,16.195 3.399,16.391 2.517,16.391C1.725,16.391 1.191,16.136 0.738,15.633C0.14,14.967 -0.107,13.879 0.043,12.566C0.313,10.103 1.589,7.618 4.047,7.618ZM21.016,7.75C23.026,7.75 24.03,8.662 23.999,10.461C23.962,12.569 22.678,14.119 20.745,14.477C20.47,14.527 20.191,14.547 19.912,14.545L18.978,14.541C18.963,14.541 18.948,14.547 18.937,14.558C18.926,14.568 18.92,14.583 18.92,14.598C18.92,14.608 18.922,14.618 18.928,14.627C18.933,14.636 18.941,14.643 18.95,14.648L19.744,15.062C19.809,15.096 19.835,15.153 19.82,15.226C19.815,15.249 19.618,16.139 19.613,16.159C19.596,16.237 19.533,16.282 19.442,16.282L17.739,16.282C17.715,16.282 17.69,16.277 17.668,16.267C17.646,16.257 17.626,16.241 17.61,16.223C17.598,16.208 17.589,16.191 17.585,16.173C17.58,16.155 17.581,16.135 17.585,16.116L19.481,7.875C19.5,7.789 19.581,7.751 19.653,7.751L21.016,7.75ZM17.273,7.762C17.292,7.77 17.31,7.781 17.324,7.795C17.338,7.81 17.351,7.828 17.358,7.847C17.366,7.866 17.369,7.886 17.369,7.906L17.358,16.119C17.361,16.138 17.36,16.158 17.355,16.177C17.35,16.196 17.34,16.213 17.328,16.228C17.313,16.245 17.295,16.259 17.274,16.268C17.254,16.277 17.232,16.282 17.21,16.281L15.397,16.281C15.377,16.282 15.356,16.277 15.337,16.27C15.318,16.262 15.3,16.25 15.286,16.236C15.272,16.221 15.26,16.204 15.253,16.185C15.245,16.166 15.241,16.146 15.241,16.125L15.28,15.328C15.282,15.241 15.28,15.217 15.229,15.211L15.161,15.209L13.447,15.209C13.323,15.209 13.314,15.22 13.27,15.334L12.914,16.191C12.882,16.252 12.818,16.281 12.722,16.281L10.927,16.281C10.818,16.281 10.74,16.173 10.781,16.072L14.499,7.873C14.524,7.824 14.562,7.75 14.648,7.75L17.214,7.75C17.234,7.75 17.254,7.754 17.273,7.762ZM15.5,9.985C15.492,9.953 15.466,9.956 15.445,9.998C15.43,10.028 15.416,10.06 15.405,10.091L14.121,13.274C14.114,13.294 14.109,13.31 14.105,13.322C14.104,13.328 14.103,13.335 14.104,13.341C14.105,13.347 14.108,13.353 14.111,13.358C14.115,13.363 14.12,13.367 14.126,13.37C14.131,13.373 14.137,13.376 14.143,13.376L15.215,13.39C15.334,13.38 15.34,13.374 15.352,13.253C15.354,13.21 15.506,10.022 15.5,9.985ZM20.112,9.582C20.097,9.582 20.083,9.588 20.072,9.599C20.061,9.609 20.055,9.624 20.054,9.639C20.054,9.649 20.057,9.659 20.062,9.668C20.068,9.677 20.075,9.685 20.084,9.69C20.097,9.697 20.869,10.104 20.926,10.135C20.968,10.158 20.969,10.198 20.955,10.267C20.948,10.298 20.415,12.642 20.416,12.644C20.419,12.647 20.435,12.655 20.515,12.655L20.551,12.655C21.446,12.619 21.934,11.561 21.952,10.534C21.961,9.979 21.772,9.638 21.429,9.588L21.358,9.582L20.112,9.582Z"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">GSAP</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-item-modern">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#ad45c6"
+                      width="55"
+                      height="55"
+                    >
+                      <title>Three.js</title>
+                      <path
+                        d="M.38 0a.268.268 0 0 0-.256.332l2.894 11.716a.268.268 0 0 0 .01.04l2.89 11.708a.268.268 0 0 0 .447.128L23.802 7.15a.268.268 0 0 0-.112-.45l-5.784-1.667a.268.268 0 0 0-.123-.035L6.38 1.715a.268.268 0 0 0-.144-.04L.456.01A.268.268 0 0 0 .38 0zm.374.654L5.71 2.08 1.99 5.664zM6.61 2.34l4.864 1.4-3.65 3.515zm-.522.12l1.217 4.926-4.877-1.4zm6.28 1.538l4.878 1.404-3.662 3.53zm-.52.13l1.208 4.9-4.853-1.392zm6.3 1.534l4.947 1.424-3.715 3.574zm-.524.12l1.215 4.926-4.876-1.398zm-15.432.696l4.964 1.424-3.726 3.586zM8.047 8.15l4.877 1.4-3.66 3.527zm-.518.137l1.236 5.017-4.963-1.432zm6.274 1.535l4.965 1.425-3.73 3.586zm-.52.127l1.235 5.012-4.958-1.43zm-9.63 2.438l4.873 1.406-3.656 3.523zm5.854 1.687l4.863 1.403-3.648 3.51zm-.54.04l1.214 4.927-4.875-1.4zm-3.896 4.02l5.037 1.442-3.782 3.638z"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">Three.js</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot"></span>
+                          <span class="dot"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-item-modern">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#ad45c6"
+                      width="45"
+                      height="45"
+                    >
+                      <title>SVG</title>
+                      <path
+                        d="M12 0c-1.497 0-2.749.965-3.248 2.17a3.45 3.45 0 00-.238 1.416 3.459 3.459 0 00-1.168-.834 3.508 3.508 0 00-1.463-.256 3.513 3.513 0 00-2.367 1.02c-1.06 1.058-1.263 2.625-.764 3.83.179.432.47.82.82 1.154a3.49 3.49 0 00-1.402.252C.965 9.251 0 10.502 0 12c0 1.497.965 2.749 2.17 3.248.437.181.924.25 1.414.236-.357.338-.65.732-.832 1.17-.499 1.205-.295 2.772.764 3.83 1.058 1.06 2.625 1.263 3.83.764.437-.181.83-.476 1.168-.832-.014.49.057.977.238 1.414C9.251 23.035 10.502 24 12 24c1.497 0 2.749-.965 3.248-2.17a3.45 3.45 0 00.238-1.416c.338.356.73.653 1.168.834 1.205.499 2.772.295 3.83-.764 1.06-1.058 1.263-2.625.764-3.83a3.459 3.459 0 00-.834-1.168 3.45 3.45 0 001.416-.238C23.035 14.749 24 13.498 24 12c0-1.497-.965-2.749-2.17-3.248a3.455 3.455 0 00-1.414-.236c.357-.338.65-.732.832-1.17.499-1.205.295-2.772-.764-3.83a3.513 3.513 0 00-2.367-1.02 3.508 3.508 0 00-1.463.256c-.437.181-.83.475-1.168.832a3.45 3.45 0 00-.238-1.414C14.749.965 13.498 0 12 0zm-.041 1.613a1.902 1.902 0 011.387 3.246v3.893L16.098 6A1.902 1.902 0 1118 7.902l-2.752 2.752h3.893a1.902 1.902 0 110 2.692h-3.893L18 16.098A1.902 1.902 0 1116.098 18l-2.752-2.752v3.893a1.902 1.902 0 11-2.692 0v-3.893L7.902 18A1.902 1.902 0 116 16.098l2.752-2.752H4.859a1.902 1.902 0 110-2.692h3.893L6 7.902A1.902 1.902 0 117.902 6l2.752 2.752V4.859a1.902 1.902 0 011.305-3.246z"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">SVG Animation</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skill Card 3 -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <span class="skill-number">03</span>
+                  <h3>Backend</h3>
+                </div>
+                <div class="skill-card-content">
+                  <div class="skill-item-modern">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#ad45c6"
+                      width="45"
+                      height="45"
+                    >
+                      <title>Symfony</title>
+                      <path
+                        d="M24 12c0 6.628-5.372 12-12 12S0 18.628 0 12 5.372 0 12 0s12 5.372 12 12zm-6.753-7.561c-1.22.042-2.283.715-3.075 1.644-.878 1.02-1.461 2.229-1.881 3.461-.753-.614-1.332-1.414-2.539-1.761-.966-.297-2.015-.105-2.813.514-.41.319-.71.757-.861 1.254-.36 1.176.381 2.225.719 2.6l.737.79c.15.154.519.56.339 1.138-.193.631-.951 1.037-1.732.799-.348-.106-.848-.366-.734-.73.045-.15.152-.263.21-.391.052-.11.077-.194.095-.242.141-.465-.053-1.07-.551-1.223-.465-.143-.939-.03-1.125.566-.209.68.117 1.913 1.86 2.449 2.04.628 3.765-.484 4.009-1.932.153-.907-.255-1.582-1.006-2.447l-.612-.677c-.371-.37-.497-1.002-.114-1.485.324-.409.785-.584 1.539-.379 1.103.3 1.594 1.063 2.412 1.68-.338 1.11-.56 2.223-.759 3.222l-.123.746c-.585 3.07-1.033 4.757-2.194 5.726-.234.166-.57.416-1.073.434-.266.005-.352-.176-.355-.257-.006-.184.15-.271.255-.353.154-.083.39-.224.372-.674-.016-.532-.456-.994-1.094-.973-.477.017-1.203.465-1.176 1.286.028.85.819 1.485 2.012 1.444.638-.021 2.062-.281 3.464-1.949 1.633-1.911 2.09-4.101 2.434-5.706l.383-2.116c.213.024.441.042.69.048 2.032.044 3.049-1.01 3.064-1.776.01-.464-.304-.921-.744-.91-.386.009-.718.278-.806.654-.094.428.646.813.068 1.189-.41.266-1.146.452-2.184.3l.188-1.042c.386-1.976.859-4.407 2.661-4.467.132-.007.612.006.623.323.003.105-.022.134-.147.375-.115.155-.174.345-.168.537.017.504.4.836.957.816.743-.023.955-.748.945-1.119-.032-.874-.952-1.424-2.17-1.386z"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">Symfony</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-item-modern">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#ad45c6"
+                      width="45"
+                      height="45"
+                    >
+                      <title>Node.js</title>
+                      <path
+                        d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">Node.js</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-item-modern">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="#ad45c6"
+                      width="45"
+                      height="45"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M3 4h4v16H3V4zm6 0h4v16H9V4zm6 0h4v16h-4V4z" />
+                      <path
+                        d="M21 11h-3v2h3v-2zm-6 0h-3v2h3v-2zm-6 0H6v2h3v-2z"
+                        opacity="0.5"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">API REST</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skill Card 4 -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <span class="skill-number">04</span>
+                  <h3>Tools</h3>
+                </div>
+                <div class="skill-card-content">
+                  <div class="skill-item-modern">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#ad45c6"
+                      width="45"
+                      height="45"
+                    >
+                      <title>GitHub</title>
+                      <path
+                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">GitHub</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-item-modern">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      viewBox="0 0 100.06 99.48"
+                      width="45"
+                      height="45"
+                    >
+                      <defs>
+                        <mask
+                          id="mask"
+                          x="0"
+                          y="0"
+                          width="100.06"
+                          height="99.48"
+                          maskUnits="userSpaceOnUse"
+                        >
+                          <g transform="translate(0.06 -0.26)">
+                            <g id="mask0">
+                              <path
+                                d="M70.91,99.32a6.26,6.26,0,0,0,5-.19l20.59-9.91A6.25,6.25,0,0,0,100,83.59V16.41a6.25,6.25,0,0,0-3.54-5.63L75.87.87a6.24,6.24,0,0,0-6.36.58,6.32,6.32,0,0,0-.74.63L29.36,38,12.19,25a4.17,4.17,0,0,0-5.32.24l-5.51,5a4.18,4.18,0,0,0,0,6.17L16.25,50,1.36,63.58a4.18,4.18,0,0,0,0,6.17l5.51,5a4.17,4.17,0,0,0,5.32.24L29.36,62l39.41,36A6.25,6.25,0,0,0,70.91,99.32ZM75,27.3,45.11,50,75,72.7Z"
+                                fill="#fff"
+                                fill-rule="evenodd"
+                              />
+                            </g>
+                          </g>
+                        </mask>
+                        <lineargradient
+                          id="Dégradé_sansnom"
+                          x1="49.94"
+                          y1="101.74"
+                          x2="49.94"
+                          y2="2.26"
+                          gradientTransform="matrix(1, 0, 0, -1, 0, 102)"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop offset="0" stop-color="#fff" />
+                          <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                        </lineargradient>
+                      </defs>
+                      <g mask="url(#mask)">
+                        <path
+                          d="M96.46,10.8,75.86.88a6.23,6.23,0,0,0-7.11,1.2L1.3,63.58a4.18,4.18,0,0,0,0,6.17l5.51,5a4.17,4.17,0,0,0,5.32.24L93.36,13.37a4.14,4.14,0,0,1,6.64,3.3v-.24A6.25,6.25,0,0,0,96.46,10.8Z"
+                          transform="translate(0.06 -0.26)"
+                          fill="#ad45c6"
+                        />
+                        <path
+                          d="M96.46,89.2l-20.6,9.92a6.23,6.23,0,0,1-7.11-1.2L1.3,36.42a4.18,4.18,0,0,1,0-6.17l5.51-5A4.17,4.17,0,0,1,12.13,25L93.36,86.63a4.14,4.14,0,0,0,6.64-3.3v.24A6.25,6.25,0,0,1,96.46,89.2Z"
+                          transform="translate(0.06 -0.26)"
+                          fill="#ad45c6"
+                        />
+                        <path
+                          d="M75.86,99.13a6.25,6.25,0,0,1-7.11-1.21A3.66,3.66,0,0,0,75,95.33V4.67a3.66,3.66,0,0,0-6.25-2.59A6.25,6.25,0,0,1,75.86.87l20.6,9.91A6.25,6.25,0,0,1,100,16.41V83.59a6.25,6.25,0,0,1-3.54,5.63Z"
+                          transform="translate(0.06 -0.26)"
+                          fill="#ad45c6"
+                        />
+                        <g opacity="0.25">
+                          <path
+                            d="M70.85,99.32a6.26,6.26,0,0,0,5-.19L96.4,89.22a6.25,6.25,0,0,0,3.54-5.63V16.41a6.25,6.25,0,0,0-3.54-5.63L75.81.87a6.24,6.24,0,0,0-6.36.58,6.32,6.32,0,0,0-.74.63L29.29,38,12.13,25a4.17,4.17,0,0,0-5.32.24l-5.51,5a4.18,4.18,0,0,0,0,6.17L16.19,50,1.3,63.58a4.18,4.18,0,0,0,0,6.17l5.51,5a4.17,4.17,0,0,0,5.32.24L29.29,62l39.42,36A6.25,6.25,0,0,0,70.85,99.32Zm4.1-72L45.05,50,75,72.7Z"
+                            transform="translate(0.06 -0.26)"
+                            fill-rule="evenodd"
+                            fill="url(#Dégradé_sans_nom)"
+                          />
+                        </g>
+                      </g>
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">VS Code</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-item-modern">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#ad45c6"
+                      width="45"
+                      height="45"
+                    >
+                      <title>Webpack</title>
+                      <path
+                        d="M22.1987 18.498l-9.7699 5.5022v-4.2855l6.0872-3.3338 3.6826 2.117zm.6683-.6026V6.3884l-3.5752 2.0544v7.396zm-21.0657.6026l9.7699 5.5022v-4.2855L5.484 16.3809l-3.6826 2.117zm-.6683-.6026V6.3884l3.5751 2.0544v7.396zm.4183-12.2515l10.0199-5.644v4.1434L5.152 7.6586l-.0489.028zm20.8975 0l-10.02-5.644v4.1434l6.4192 3.5154.0489.028 3.5518-2.0427zm-10.8775 13.096l-6.0056-3.2873V8.9384l6.0054 3.4525v6.349zm.8575 0l6.0053-3.2873V8.9384l-6.0053 3.4525zM5.9724 8.1845l6.0287-3.3015L18.03 8.1845l-6.0288 3.4665z"
+                      />
+                    </svg>
+                    <div class="skill-info">
+                      <span class="skill-name">Webpack</span>
+                      <div class="skill-level">
+                        <div class="skill-dots">
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot filled"></span>
+                          <span class="dot"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Contact -->
+      <section class="contact-section" id="contact">
+        <!-- Ver compact à droite -->
+        <div class="worm-wrap-contact">
+          <svg
+            class="worm-path-svg-contact"
+            width="300"
+            height="600"
+            viewBox="0 0 150 300"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <lineargradient
+                id="wormGradientContact"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0%" class="worm-stop-1" />
+                <stop offset="20%" class="worm-stop-2" />
+                <stop offset="40%" class="worm-stop-3" />
+                <stop offset="60%" class="worm-stop-4" />
+                <stop offset="80%" class="worm-stop-3" />
+                <stop offset="100%" class="worm-stop-1" />
+              </lineargradient>
+            </defs>
+            <!-- Ombre pour donner du volume -->
+            <path
+              d="M 75,20 C 50,60 100,100 75,140 C 50,180 100,220 75,260 C 60,280 75,290 75,300"
+              fill="none"
+              stroke="#6a1b9a"
+              stroke-width="32"
+              stroke-linecap="round"
+              opacity="0.3"
+            />
+            <!-- Couche principale avec dégradé -->
+            <path
+              id="wormPathContact"
+              d="M 75,20 C 50,60 100,100 75,140 C 50,180 100,220 75,260 C 60,280 75,290 75,300"
+              fill="none"
+              stroke="url(#wormGradientContact)"
+              stroke-width="30"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div class="circle-3d-contact" id="movingCircleContact"></div>
+          <div class="black-hole" id="blackHole">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <defs>
+                <radialgradient id="holeGradient">
+                  <stop
+                    offset="0%"
+                    stop-color="rgb(0, 0, 0); stop-opacity: 0"
+                  />
+                  <stop
+                    offset="40%"
+                    stop-color="rgb(173, 69, 198)"
+                    stop-opacity="0.3"
+                  />
+                  <stop
+                    offset="70%"
+                    stop-color="rgb(173, 69, 198)"
+                    stop-opacity="0.6"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="rgb(173, 69, 198)"
+                    stop-opacity="0"
+                  />
+                </radialgradient>
+              </defs>
+              <circle cx="50" cy="50" r="45" fill="url(#holeGradient)" />
+            </svg>
+          </div>
+        </div>
+        <div class="container">
+          <h2 class="section-title" data-scroll>Contact</h2>
+          <div class="contact-content">
+            <div class="contact-info" data-scroll>
+              <h3>Travaillons ensemble</h3>
+              <p>
+                Un projet en tête ? N'hésitez pas à me contacter pour en
+                discuter.
+              </p>
+              <div class="contact-details">
+                <div class="contact-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 88.53 44"
+                    width="28"
+                    height="28"
+                  >
+                    <path
+                      d="M96.75,38.06a.71.71,0,0,0-.21,0s0,0-.08,0H30.11L30,38a.59.59,0,0,0-.2,0,2.76,2.76,0,0,0-2.5,2.73V79.21A2.79,2.79,0,0,0,30.13,82H96.48a2.79,2.79,0,0,0,2.8-2.79V40.79a2.8,2.8,0,0,0-2.52-2.73Zm-3.46,2-30,22.13-30-22.13ZM29.83,79.85a.68.68,0,0,1-.42-.64V40.79a.7.7,0,0,1,.44-.64L55.71,59.21Zm3.25.07L57.44,60.48l5.23,3.85a1.05,1.05,0,0,0,.62.21,1,1,0,0,0,.63-.21l5.23-3.85L93.5,79.92Zm64.09-.71a.7.7,0,0,1-.42.64L70.88,59.21,96.73,40.14a.72.72,0,0,1,.44.65Z"
+                      transform="translate(-10.75 -38)"
+                      fill="#ad45c6"
+                    />
+                    <path
+                      d="M17.6,52.31h7.77a1,1,0,1,0,0-2.08H17.61a1,1,0,0,0-1.05,1A1,1,0,0,0,17.6,52.31Z"
+                      transform="translate(-10.75 -38)"
+                      fill="#ad45c6"
+                    />
+                    <path
+                      d="M15.67,58.12h9.71a1,1,0,1,0,0-2.08H15.67a1,1,0,0,0-1.05,1.05A1,1,0,0,0,15.67,58.12Z"
+                      transform="translate(-10.75 -38)"
+                      fill="#ad45c6"
+                    />
+                    <path
+                      d="M26.42,62.92a1,1,0,0,0-1-1H11.79a1,1,0,1,0,0,2.08H25.38A1,1,0,0,0,26.42,62.92Z"
+                      transform="translate(-10.75 -38)"
+                      fill="#ad45c6"
+                    />
+                    <path
+                      d="M25.38,67.69H17.61a1,1,0,1,0,0,2.08h7.77a1,1,0,0,0,0-2.08Z"
+                      transform="translate(-10.75 -38)"
+                      fill="#ad45c6"
+                    />
+                  </svg>
+                  <span>werner.carole7@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 18 28"
+                    fill="#ad45c6"
+                  >
+                    <path
+                      d="M16,2A8.92,8.92,0,0,0,9.63,4.68,9.16,9.16,0,0,0,7,11.12v1.13a22.13,22.13,0,0,0,6.66,15.86h0l1.64,1.61a1,1,0,0,0,1.4,0l1.64-1.61h0A22.13,22.13,0,0,0,25,12.25V11.12a9.16,9.16,0,0,0-2.63-6.44A8.92,8.92,0,0,0,16,2Zm0,2a6.94,6.94,0,0,1,4.94,2.08h0a7.21,7.21,0,0,1,2.05,5v1.13A20.18,20.18,0,0,1,17,26.68L16,27.6l-.95-.92A20.18,20.18,0,0,1,9,12.25V11.12a7.21,7.21,0,0,1,2.05-5h0A6.94,6.94,0,0,1,16,4Z"
+                      transform="translate(-7 -2)"
+                    />
+                    <path
+                      d="M16,7a4,4,0,1,0,4,4A4,4,0,0,0,16,7Zm0,2a2,2,0,1,1-2,2A2,2,0,0,1,16,9Z"
+                      transform="translate(-7 -2)"
+                    />
+                  </svg>
+                  <span>Puy-de-Dôme, France</span>
+                </div>
+              </div>
+            </div>
+            <form class="contact-form" data-scroll id="contactForm">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Votre nom"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Votre email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  name="message"
+                  id="message"
+                  placeholder="Votre message"
+                  rows="6"
+                  required
+                ></textarea>
+              </div>
+              <!-- Champ honeypot anti-spam (caché avec CSS) -->
               <input
                 type="text"
-                name="name"
-                id="name"
-                placeholder="Votre nom"
-                autocomplete="name"
-                required
+                name="honeypot"
+                id="honeypot"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+                aria-label="Ne pas remplir ce champ"
               />
+              <button type="submit" class="submit-btn">
+                <span class="btn-text">Envoyer</span>
+                <span class="btn-loader">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 50 50"
+                    class="btn-loader-svg"
+                  >
+                    <circle
+                      cx="25"
+                      cy="25"
+                      r="20"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="4"
+                      stroke-dasharray="31.4 31.4"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <div class="form-message"></div>
+            </form>
+          </div>
+
+          <!-- Section réseaux sociaux et disponibilité -->
+          <div class="contact-extra" data-scroll>
+            <div class="availability">
+              <h3>Disponibilité</h3>
+              <p>Actuellement disponible pour des projets web et design.</p>
+              <p>Temps de réponse moyen : <strong>24-48h</strong></p>
             </div>
-            <div class="form-group">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Votre email"
-                autocomplete="email"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <textarea
-                name="message"
-                id="message"
-                placeholder="Votre message"
-                rows="6"
-                required
-              ></textarea>
-            </div>
-            <!-- Champ honeypot anti-spam (caché avec CSS) -->
-            <input
-              type="text"
-              name="honeypot"
-              id="honeypot"
-              tabindex="-1"
-              autocomplete="off"
-              aria-hidden="true"
-              aria-label="Ne pas remplir ce champ"
-            />
-            <button type="submit" class="submit-btn">
-              <span class="btn-text">Envoyer</span>
-              <span class="btn-loader">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 50 50"
-                  class="btn-loader-svg"
+
+            <div class="social-links">
+              <h3>Retrouvez-moi</h3>
+              <div class="social-icons">
+                <a
+                  href="https://github.com/Caro639"
+                  target="_blank"
+                  rel="noopener"
+                  referrerpolicy="no-referrer"
+                  class="social-icon"
+                  aria-label="GitHub"
                 >
-                  <circle
-                    cx="25"
-                    cy="25"
-                    r="20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="4"
-                    stroke-dasharray="31.4 31.4"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div class="form-message"></div>
-          </form>
-        </div>
-
-        <!-- Section réseaux sociaux et disponibilité -->
-        <div class="contact-extra" data-scroll>
-          <div class="availability">
-            <h3>Disponibilité</h3>
-            <p>Actuellement disponible pour des projets web et design.</p>
-            <p>Temps de réponse moyen : <strong>24-48h</strong></p>
-          </div>
-
-          <div class="social-links">
-            <h3>Retrouvez-moi</h3>
-            <div class="social-icons">
-              <a
-                href="https://github.com/Caro639"
-                target="_blank"
-                rel="noopener"
-                referrerpolicy="no-referrer"
-                class="social-icon"
-                aria-label="GitHub"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/carole-werner-096a9b212"
-                target="_blank"
-                rel="noopener"
-                referrerpolicy="no-referrer"
-                class="social-icon"
-                aria-label="LinkedIn"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                  />
-                </svg>
-              </a>
-              <a href="#" class="social-icon" aria-label="Twitter">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
-                  />
-                </svg>
-              </a>
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/carole-werner-096a9b212"
+                  target="_blank"
+                  rel="noopener"
+                  referrerpolicy="no-referrer"
+                  class="social-icon"
+                  aria-label="LinkedIn"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                    />
+                  </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Twitter">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Bouton retour en haut -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Retour en haut">
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
+      <!-- Bouton retour en haut -->
+      <button
+        id="scrollToTop"
+        class="scroll-to-top"
+        aria-label="Retour en haut"
       >
-        <path d="M12 19V5M5 12l7-7 7 7" />
-      </svg>
-    </button>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+      </button>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-      <p>© 2025 Ozya - Portfolio - Tous droits réservés</p>
+      <p>© 2026 Ozya - Portfolio - Tous droits réservés</p>
     </footer>
 
     <!-- Préconnexion au CDN JSDelivr pour accélérer le chargement des scripts -->
