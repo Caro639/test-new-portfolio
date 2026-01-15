@@ -926,7 +926,7 @@ h2 {
 
 /* Images individuelles pour chaque projet */
 .project-item:nth-child(1) .project-reveal-image.bg-loaded::before {
-  background-image: url("./images/site-queza.webp");
+  background-image: url("./images/quezaco-pringles.webp");
 }
 
 .project-item:nth-child(2) .project-reveal-image.bg-loaded::before {
