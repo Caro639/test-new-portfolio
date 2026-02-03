@@ -20,7 +20,8 @@ body {
   font-family: "Audiowide", sans-serif;
   position: relative;
   color: #ffffff;
-  cursor: none; /* Masquer le curseur par défaut */
+  /* Masquer le curseur par défaut */
+  cursor: none;
 }
 
 /* Curseur personnalisé avec effet néon */
@@ -34,13 +35,14 @@ body {
   z-index: 9999;
   transition:
     transform 0.2s ease,
-    opacity 0.15s ease; /* Transition uniquement pour scale/opacity */
+    /* Transition uniquement pour scale/opacity */ opacity 0.15s ease;
   box-shadow:
     0 0 15px rgba(173, 69, 198, 0.6),
     0 0 30px rgba(173, 69, 198, 0.4),
     inset 0 0 10px rgba(173, 69, 198, 0.3);
   transform: translate(-50%, -50%);
-  will-change: transform; /* Optimisation GPU */
+  /* Optimisation GPU */
+  will-change: transform;
 }
 
 /* Halo lumineux qui suit la souris */
@@ -871,7 +873,7 @@ h2 {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
-  min-height: 500px;
+  min-height: 100%;
   perspective: 1000px;
   transition: all 0.3s ease;
 }
@@ -986,6 +988,7 @@ h2 {
 
 .project-item:nth-child(5) .project-reveal-image.bg-loaded::before {
   background-image: url("./images/audit-projet.webp");
+  background-position: bottom;
 }
 
 .project-item:nth-child(5) .project-reveal-image::before {
@@ -1090,12 +1093,12 @@ h2 {
     min-height: unset;
   }
 
-  .project-item:nth-child(even) {
-    direction: ltr;
+  .project-visual {
+    height: 580px;
   }
 
-  .project-visual {
-    height: 550px;
+  .project-item:nth-child(even) {
+    direction: ltr;
   }
 
   .project-number {
