@@ -35,4 +35,3 @@ PHPMailer/
 
 # Scripts PowerShell de maintenance locale
 *.ps1
-!install-phpmailer.ps1

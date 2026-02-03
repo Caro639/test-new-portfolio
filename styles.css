@@ -863,6 +863,7 @@ h2 {
   flex-direction: column;
   gap: 120px;
   margin-top: 80px;
+  transform-style: preserve-3d;
 }
 
 .project-item {
@@ -871,6 +872,8 @@ h2 {
   gap: 80px;
   align-items: center;
   min-height: 500px;
+  perspective: 1000px;
+  transition: all 0.3s ease;
 }
 
 .project-item:nth-child(even) {
@@ -884,6 +887,8 @@ h2 {
 .project-visual {
   position: relative;
   height: 500px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .project-number {
@@ -896,6 +901,8 @@ h2 {
   line-height: 1;
   z-index: 1;
   font-family: "Audiowide", sans-serif;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateZ(30px);
 }
 
 .project-image-wrapper {
@@ -904,6 +911,9 @@ h2 {
   height: 100%;
   overflow: hidden;
   border-radius: 20px;
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 .project-reveal-image {
@@ -913,13 +923,20 @@ h2 {
   background: linear-gradient(135deg, #ad45c6 0%, #3a2b58 50%, #171127 100%);
   background-size: cover;
   background-position: center;
-  -webkit-clip-path: inset(0 100% 0 0);
-  clip-path: inset(0 100% 0 0);
-  transform-origin: left center;
-  transition: all 0.3s ease;
+  transform-origin: center center;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   border: 1px solid #ad45c6;
   border-radius: 20px;
   overflow: hidden;
+  opacity: 0;
+  transform: scale(0.85) translateY(30px);
+  filter: blur(10px);
+}
+
+.project-reveal-image.is-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0px);
 }
 
 .project-reveal-image::before {
@@ -930,6 +947,7 @@ h2 {
   background-position: center;
   filter: hue-rotate(290deg) saturate(1.2);
   z-index: 1;
+  transition: filter 0.6s ease;
 }
 
 .project-image-wrapper {
@@ -940,8 +958,9 @@ h2 {
   box-shadow:
     0 0 25px rgba(173, 69, 198, 0.4),
     0 0 50px rgba(173, 69, 198, 0.25),
-    0 0 80px rgba(173, 69, 198, 0.15);
-  transform: scale(1.02);
+    0 0 80px rgba(173, 69, 198, 0.15),
+    0 30px 80px rgba(0, 0, 0, 0.4);
+  transform: translateZ(20px) scale(1.05);
 }
 
 .project-image-wrapper:hover .project-reveal-image::before {
@@ -967,6 +986,8 @@ h2 {
 
 .project-content {
   padding: 40px;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
 }
 
 .project-content h3 {
@@ -998,6 +1019,15 @@ h2 {
   border: 1px solid rgba(173, 69, 198, 0.4);
   font-weight: 500;
   letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.project-tech span:hover {
+  background: rgba(173, 69, 198, 0.3);
+  border-color: rgba(173, 69, 198, 0.6);
+  transform: translateZ(10px) scale(1.05);
+  box-shadow: 0 5px 15px rgba(173, 69, 198, 0.3);
 }
 
 .project-links {
@@ -1405,6 +1435,17 @@ h2 {
 
 .form-group {
   margin-bottom: 25px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  color: rgba(173, 69, 198, 0.35);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .form-group input,
@@ -1871,7 +1912,7 @@ h2 {
   }
 
   .project-visual {
-    height: 250px;
+    height: 280px;
   }
 
   .project-number {

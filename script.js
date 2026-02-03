@@ -124,68 +124,62 @@ function setupScrollAnimations() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("bg-loaded");
+            // Ajouter aussi la classe pour l'animation moderne
+            setTimeout(() => {
+              entry.target.classList.add("is-visible");
+            }, 200);
             obs.unobserve(entry.target);
           }
         });
       },
-      { rootMargin: "0px 0px 200px 0px" }
+      { rootMargin: "0px 0px 200px 0px", threshold: 0.05 },
     );
     revealImages.forEach((el) => observer.observe(el));
   } else {
     // Fallback si IntersectionObserver non supporté
-    revealImages.forEach((el) => el.classList.add("bg-loaded"));
+    revealImages.forEach((el) => {
+      el.classList.add("bg-loaded");
+      el.classList.add("is-visible");
+    });
   }
 
-  // Animation des projets avec effet de révélation d'image
+  // Animation des projets au scroll (contenu et numéro seulement)
   gsap.utils.toArray(".project-item").forEach((item, index) => {
-    const imageReveal = item.querySelector(".project-reveal-image");
     const content = item.querySelector(".project-content");
     const number = item.querySelector(".project-number");
 
-    // Timeline pour chaque projet
-    const tl = gsap.timeline({
+    // Animation du contenu
+    gsap.from(content, {
       scrollTrigger: {
         trigger: item,
-        start: "top 70%",
-        end: "top 20%",
-        scrub: 1,
-        // markers: true,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
       },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power3.out",
+      immediateRender: false,
     });
 
-    // Animation de révélation de l'image avec clip-path
-    tl.to(imageReveal, {
-      clipPath: "inset(0 0% 0 0)",
-      duration: 0.2, // Durée réduite pour accélérer l'animation
-      ease: "power2.inOut",
-    })
-      // Animation du contenu en parallèle
-      .from(
-        content,
-        {
-          opacity: 0,
-          x: index % 2 === 0 ? 50 : -50,
-          duration: 0.8,
-          ease: "power3.out",
-        },
-        "-=0.5"
-      )
-      // Animation du numéro
-      .from(
-        number,
-        {
-          opacity: 0,
-          scale: 0.5,
-          duration: 0.6,
-          ease: "back.out(1.7)",
-        },
-        "-=0.8"
-      );
+    // Animation du numéro
+    gsap.from(number, {
+      scrollTrigger: {
+        trigger: item,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+      opacity: 0,
+      scale: 0.6,
+      duration: 1,
+      ease: "back.out(1.5)",
+      immediateRender: false,
+    });
   });
 
   // Animation horizontale des compétences au scroll (uniquement desktop)
   const skillsContainer = document.querySelector(
-    ".skills-horizontal-container"
+    ".skills-horizontal-container",
   );
   const skillsWrapper = document.querySelector(".skills-horizontal-wrapper");
   const isDesktop = window.innerWidth > 768;
@@ -231,14 +225,14 @@ function setupScrollAnimations() {
             trigger: card,
             containerAnimation: gsap.getById(
               ScrollTrigger.getAll().find(
-                (st) => st.vars.trigger === ".skills-section"
-              )
+                (st) => st.vars.trigger === ".skills-section",
+              ),
             ),
             start: "left center",
             end: "right center",
             scrub: 1,
           },
-        }
+        },
       );
     });
   } else if (skillsContainer) {
@@ -263,7 +257,7 @@ function setupScrollAnimations() {
             end: "top center",
             toggleActions: "play none none reverse",
           },
-        }
+        },
       );
     });
   }
@@ -674,7 +668,7 @@ function initCustomCursor() {
 
   // Effet hover sur les éléments interactifs
   const interactiveElements = document.querySelectorAll(
-    "a, button, .project-item, .skill-card, input, textarea"
+    "a, button, .project-item, .skill-card, input, textarea",
   );
 
   interactiveElements.forEach((el) => {
@@ -737,6 +731,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Activer le suivi de section active dans le menu
   updateActiveMenuLink();
+
+  // Initialiser l'effet Parallax 3D sur les projets
+  initProjectParallax3D();
 });
 
 // ===== ANIMATION DU GLOBE TOURNANT =====
@@ -816,7 +813,7 @@ function animateFloatingStar() {
   const star = document.getElementById("floatingStar");
   // Chercher le "o" uniquement dans la première ligne
   const firstLine = document.querySelector(
-    ".hero-title .title-line:first-child"
+    ".hero-title .title-line:first-child",
   );
   const chars = firstLine.querySelectorAll(".char");
 
@@ -875,7 +872,7 @@ function animateFloatingStar() {
             repeat: -1,
             ease: "none",
           },
-          "-=0.3"
+          "-=0.3",
         )
         // Effet de flottement vertical
         .to(
@@ -887,7 +884,7 @@ function animateFloatingStar() {
             yoyo: true,
             ease: "sine.inOut",
           },
-          "-=3"
+          "-=3",
         );
     }, 100);
 
@@ -937,7 +934,7 @@ function initContactForm() {
     if (formData.message.length < 10) {
       showFormMessage(
         "Le message doit contenir au moins 10 caractères",
-        "error"
+        "error",
       );
       return;
     }
@@ -990,7 +987,7 @@ function initContactForm() {
     gsap.fromTo(
       formMessage,
       { opacity: 0, y: -10 },
-      { opacity: 1, y: 0, duration: 0.3 }
+      { opacity: 1, y: 0, duration: 0.3 },
     );
 
     // Masquer après 5 secondes si succès
@@ -1130,6 +1127,69 @@ function updateActiveMenuLink() {
 
       if (currentSection && href === `#${currentSection}`) {
         link.classList.add("active");
+      }
+    });
+  });
+}
+
+// ===== EFFET PARALLAX 3D SUR LES PROJETS =====
+function initProjectParallax3D() {
+  const projectItems = document.querySelectorAll(".project-item");
+
+  projectItems.forEach((item) => {
+    const visual = item.querySelector(".project-visual");
+    const number = item.querySelector(".project-number");
+    const content = item.querySelector(".project-content");
+
+    if (!visual) return;
+
+    // Effet Parallax 3D au mouvement de la souris
+    item.addEventListener("mousemove", (e) => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Calculer la position relative (de -1 à 1)
+      const xPercent = (x / rect.width - 0.5) * 2;
+      const yPercent = (y / rect.height - 0.5) * 2;
+
+      // Rotation 3D basée sur la position de la souris
+      const rotateY = xPercent * 8; // Max 8 degrés
+      const rotateX = -yPercent * 8; // Max 8 degrés
+
+      // Appliquer les transformations
+      visual.style.transform = `
+        rotateX(${rotateX}deg) 
+        rotateY(${rotateY}deg) 
+        translateZ(10px)
+      `;
+
+      // Effet parallax sur le numéro
+      if (number) {
+        number.style.transform = `
+          translateZ(30px) 
+          translateX(${xPercent * 10}px) 
+          translateY(${yPercent * 10}px)
+        `;
+      }
+
+      // Effet subtil sur le contenu
+      if (content) {
+        content.style.transform = `
+          translateX(${xPercent * 5}px) 
+          translateY(${yPercent * 5}px)
+        `;
+      }
+    });
+
+    // Réinitialiser au départ de la souris
+    item.addEventListener("mouseleave", () => {
+      visual.style.transform = "rotateX(0) rotateY(0) translateZ(0)";
+      if (number) {
+        number.style.transform = "translateZ(30px)";
+      }
+      if (content) {
+        content.style.transform = "translateX(0) translateY(0)";
       }
     });
   });
