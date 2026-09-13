@@ -24,6 +24,18 @@ body {
   cursor: none;
 }
 
+/* ===== STYLES SCROLLSMOOTHER ===== */
+#smooth-wrapper {
+  overflow: hidden;
+}
+
+#smooth-content {
+  overflow: visible;
+  width: 100%;
+  /* Permet d'ajouter de la hauteur pour le smooth scroll */
+  will-change: transform;
+}
+
 /* Curseur personnalisé avec effet néon */
 .custom-cursor {
   position: fixed;
@@ -35,7 +47,7 @@ body {
   z-index: 9999;
   transition:
     transform 0.2s ease,
-    /* Transition uniquement pour scale/opacity */ opacity 0.15s ease;
+    opacity 0.15s ease;
   box-shadow:
     0 0 15px rgba(173, 69, 198, 0.6),
     0 0 30px rgba(173, 69, 198, 0.4),
@@ -833,7 +845,9 @@ h2 {
   box-shadow:
     0 0 50px rgba(173, 69, 198, 1),
     0 0 30px rgba(173, 69, 198, 1);
-  opacity: 1 !important;
+  /* Caché par défaut : sans !important pour laisser gsap.set() piloter l'affichage */
+  opacity: 0;
+  display: none;
   pointer-events: none;
 }
 
@@ -969,6 +983,75 @@ h2 {
   filter: hue-rotate(290deg) saturate(1.2) brightness(1.08);
 }
 
+/* Encart dépliable "pourquoi cette stack", sous les tags techno. Élément
+   natif <details> : accessible au clavier et fonctionne au tap sans JS. */
+.project-why {
+  margin-top: 20px;
+}
+
+.project-why {
+  background: rgba(173, 69, 198, 0.08);
+  border: 1px solid rgba(173, 69, 198, 0.25);
+  border-radius: 12px;
+  padding: 0 20px;
+}
+
+.project-why h4 {
+  color: #ad45c6;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 16px auto 0 auto;
+}
+
+.project-why summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ad45c6;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.project-why summary::-webkit-details-marker {
+  display: none;
+}
+
+.project-why summary::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.3s ease;
+}
+
+.project-why[open] summary::before {
+  transform: rotate(45deg);
+}
+
+.project-why summary:hover {
+  color: #ff69d4;
+}
+
+.project-why p {
+  margin: 10px auto;
+  /* padding: 16px 20px;
+  background: rgba(173, 69, 198, 0.08);
+  border: 1px solid rgba(173, 69, 198, 0.25);
+  border-radius: 12px;
+  color: #e0e0e0;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6; */
+}
+
 /* Images individuelles pour chaque projet */
 .project-item:nth-child(1) .project-reveal-image.bg-loaded::before {
   background-image: url("./images/quezaco-pringles.webp");
@@ -1017,7 +1100,8 @@ h2 {
 .project-content p {
   color: #e0e0e0;
   line-height: 1.8;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  /* margin-bottom: 30px; */
   font-family: Arial, sans-serif;
   font-size: clamp(1rem, 1.5vw, 1.2rem);
 }
@@ -1083,6 +1167,31 @@ h2 {
     inset 0 0 15px rgba(173, 69, 198, 0.1);
   transform: translateY(-3px);
   color: #ff69d4;
+}
+
+/* Bouton d'un lien pas encore disponible (projet en attente de contenu réel) */
+.project-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Badge affiché sur l'image de substitution tant qu'aucune vraie image
+   n'a été fournie pour le projet (voir règles nth-child ci-dessus) */
+.project-placeholder-label {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Audiowide", sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
 }
 
 /* Responsive */
@@ -1175,7 +1284,8 @@ h2 {
 }
 
 .skill-card-header h3 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  /* font-size: 2.5rem; */
   color: #ad45c6;
   margin: 0;
   font-weight: 700;
@@ -1339,9 +1449,10 @@ h2 {
     0 0 20px rgba(173, 69, 198, 0.6),
     0 0 15px rgba(173, 69, 198, 0.5),
     0 0 10px rgba(255, 105, 212, 0.4) !important;
-  opacity: 1 !important;
+  /* Caché par défaut : sans !important pour laisser gsap.set() piloter l'affichage */
+  opacity: 0;
   pointer-events: none !important;
-  display: block !important;
+  display: none;
   transform: translate(-50%, -50%) !important;
 }
 
@@ -1652,6 +1763,128 @@ h2 {
 .footer p {
   color: #e0e0e0;
   font-family: Arial, sans-serif;
+}
+
+/* test CSS compétences */
+/* Container de la section compétences */
+#competences.skills-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#competences {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2.5rem, 6vh, 4.5rem);
+}
+
+/* Titre blanc, dans le flux normal : le gap du conteneur garantit un espace
+   constant avec les cartes, quelle que soit la hauteur de l'écran. */
+.title-competences {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+  z-index: 150;
+}
+
+.skills-container {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Conteneur : l'étoile reste fixe et visible à gauche, les cartes
+   s'enchaînent à droite (script.js -> animateSkills), au fil du scroll
+   pin/scrub. Pas d'orbite : uniquement la rotation de l'étoile est scrubée.
+   Hauteur > carte la plus haute (~490px) pour qu'elle ne déborde jamais
+   au-dessus du conteneur et ne mange pas l'espace réservé sous le titre. */
+.windmill-wheel {
+  position: relative;
+  width: min(100%, 1000px);
+  height: min(64vh, 540px);
+}
+
+/* Le moyeu : l'étoile tourne sur elle-même, indépendamment des cartes */
+.wheel-hub {
+  position: absolute;
+  top: 50%;
+  left: 14%;
+  width: 220px;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.wheel-hub img {
+  display: block;
+  width: 100%;
+}
+
+/* Cartes : empilées à droite de l'étoile, l'enchaînement (opacité, scale,
+   flou) est piloté en JS via GSAP, sans déplacement orbital. */
+.card-competence {
+  position: absolute;
+  top: 50%;
+  left: 64%;
+  width: min(540px, 38vw);
+  /* width: min(440px, 38vw); */
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(58, 43, 88, 0.4);
+  border: 2px solid rgba(173, 69, 198, 0.25);
+  border-radius: 24px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  will-change: transform, opacity, filter;
+}
+
+.card-competence.is-active {
+  border-color: #ad45c6;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(173, 69, 198, 0.6),
+    0 0 60px rgba(173, 69, 198, 0.4);
+}
+
+/* En dessous de 900px, pas assez de largeur pour un côte-à-côte étoile /
+   cartes : l'étoile passe en haut et les cartes s'empilent en dessous. */
+@media (max-width: 900px) {
+  .windmill-wheel {
+    width: 100%;
+    height: 460px;
+  }
+
+  .wheel-hub {
+    left: 50%;
+    top: 15%;
+    width: 130px;
+  }
+
+  .card-competence {
+    left: 50%;
+    top: 62%;
+    width: min(90vw, 420px);
+  }
 }
 
 /* ===== RESPONSIVE ===== */

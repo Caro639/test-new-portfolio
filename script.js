@@ -1,5 +1,5 @@
-// ===== ENREGISTRER LES PLUGINS GSAP =====
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+// ===== VARIABLE POUR L'INSTANCE SCROLLSMOOTHER =====
+let smoother;
 
 // ===== FONCTION POUR DIVISER LE TEXTE EN LETTRES =====
 function splitTextToChars(element) {
@@ -184,8 +184,8 @@ function setupScrollAnimations() {
   const skillsWrapper = document.querySelector(".skills-horizontal-wrapper");
   const isDesktop = window.innerWidth > 768;
 
+  // Calculer la largeur totale du container
   if (skillsContainer && skillsWrapper && isDesktop) {
-    // Calculer la largeur totale du container
     const getScrollAmount = () => {
       const containerWidth = skillsContainer.scrollWidth;
       const wrapperWidth = skillsWrapper.offsetWidth;
@@ -369,10 +369,14 @@ function setupScrollAnimations() {
 
     // Retour en haut au clic
     scrollToTopBtn.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      if (smoother) {
+        smoother.scrollTo(0, true);
+      } else {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
     });
   }
 
@@ -452,18 +456,12 @@ function setupSmoothScroll() {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute("href"));
 
-      if (target) {
+      if (target && smoother) {
         // Offset adapté selon la section
         const offset = target.id === "skills" ? 0 : 80;
 
-        gsap.to(window, {
-          duration: 1.5,
-          scrollTo: {
-            y: target,
-            offsetY: offset,
-          },
-          ease: "power3.inOut",
-        });
+        // Utiliser ScrollSmoother pour un scroll encore plus fluide
+        smoother.scrollTo(target, true, `top ${offset}px`);
       }
     });
   });
@@ -695,6 +693,70 @@ function initCustomCursor() {
 
 // ===== INITIALISATION =====
 window.addEventListener("DOMContentLoaded", () => {
+  // Empêche le navigateur de sauter directement à une ancre (#section) au
+  // chargement : ScrollSmoother/ScrollTrigger doivent toujours calculer
+  // leurs positions en partant du haut de la page (sinon les triggers déjà
+  // "passés" comme celui du 1er chiffre de #competences se déclenchent
+  // instantanément, avant même que l'utilisateur ait scrollé).
+  if (window.location.hash) {
+    history.replaceState(
+      null,
+      "",
+      window.location.pathname + window.location.search,
+    );
+  }
+  window.scrollTo(0, 0);
+
+  // ===== VÉRIFICATION QUE GSAP ET LES PLUGINS SONT CHARGÉS =====
+  if (typeof gsap === "undefined") {
+    console.error("GSAP n'est pas chargé !");
+    return;
+  }
+  if (typeof ScrollTrigger === "undefined") {
+    console.error("ScrollTrigger n'est pas chargé !");
+    return;
+  }
+  if (typeof ScrollSmoother === "undefined") {
+    console.error("ScrollSmoother n'est pas chargé ! Vérifiez le CDN.");
+    console.log("GSAP disponible:", typeof gsap !== "undefined");
+    console.log(
+      "ScrollTrigger disponible:",
+      typeof ScrollTrigger !== "undefined",
+    );
+    return;
+  }
+
+  // ===== ENREGISTRER LES PLUGINS GSAP =====
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, ScrollSmoother);
+  console.log("✅ Tous les plugins GSAP sont chargés et enregistrés");
+
+  // ===== SORTIR LES ÉLÉMENTS "position: fixed" DE #smooth-content =====
+  // ScrollSmoother applique un transform sur #smooth-content, ce qui devient
+  // le containing block des descendants en position:fixed (spec CSS) et casse
+  // leur positionnement par rapport à la fenêtre. On les remonte donc en
+  // enfants directs de <body>, à côté de #smooth-wrapper.
+  ["movingCircle", "movingCircleContact", "blackHole"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      document.body.appendChild(el);
+      // État initial masqué pour éviter le flash en haut à gauche au chargement
+      gsap.set(el, { opacity: 0, display: "none" });
+    }
+  });
+
+  // ===== INITIALISER SCROLLSMOOTHER EN PREMIER =====
+  smoother = ScrollSmoother.create({
+    wrapper: "#smooth-wrapper",
+    content: "#smooth-content",
+    smooth: 2, // Durée du smooth (2 = ultra fluide)
+    effects: true, // Active data-speed et data-lag
+    smoothTouch: 0.1, // Smooth sur mobile (0.1 = léger, pour ne pas gêner)
+    normalizeScroll: true, // Normalise le scroll sur tous les navigateurs (essentiel!)
+    ignoreMobileResize: true, // Évite les bugs de resize sur mobile
+  });
+
+  console.log("✅ ScrollSmoother initialisé:", smoother);
+
   // Initialiser le curseur personnalisé
   initCustomCursor();
 
@@ -734,6 +796,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Initialiser l'effet Parallax 3D sur les projets
   initProjectParallax3D();
+
+  // Lancer l'animation de la section compétences
+  animateSkills();
 });
 
 // ===== ANIMATION DU GLOBE TOURNANT =====
@@ -1130,6 +1195,199 @@ function updateActiveMenuLink() {
       }
     });
   });
+}
+
+// anim compétences - l'étoile tourne en continu à côté (vitesse liée au
+// scroll grâce au scrub), pendant que les cartes s'enchaînent en douceur
+// avec un effet de profondeur (scale + flou), sans rotation ni orbite.
+function animateSkills() {
+  const section = document.querySelector("#competences");
+  const hub = document.querySelector(".wheel-hub");
+  const cards = gsap.utils.toArray(".card-competence");
+  const title = document.querySelector(".title-competences");
+
+  if (!section || cards.length === 0) return;
+
+  // Le titre arrive en fondu/glissé en continuité avec les reveals de la
+  // section Projets juste au-dessus (même style : opacity/y, power3.out).
+  if (title) {
+    gsap.from(title, {
+      scrollTrigger: {
+        trigger: "#competences",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+      opacity: 0,
+      y: 60,
+      duration: 1,
+      ease: "power3.out",
+      immediateRender: false,
+    });
+  }
+
+  const scrollDistance = () => "+=" + (cards.length - 1) * 70 + "%";
+
+  // Empile les cartes au même endroit : seule la première est visible
+  gsap.set(cards, {
+    xPercent: -50,
+    yPercent: -50,
+    opacity: 0,
+    scale: 0.88,
+    y: 40,
+    filter: "blur(8px)",
+    zIndex: 1,
+  });
+  gsap.set(cards[0], {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    filter: "blur(0px)",
+    zIndex: 2,
+  });
+  cards[0].classList.add("is-active");
+
+  // Petit "flash" ressort sur le chiffre (01, 02...) puis sur le titre de
+  // la carte à son apparition : ils grossissent et s'illuminent d'un
+  // magenta saturé avant de retomber à leur teinte normale.
+  const FLASH_COLOR = "white";
+  // const FLASH_COLOR = "#ff2fd6";
+
+  const numberPop = (card) => {
+    const number = card.querySelector(".skill-number");
+    if (!number) return null;
+    return gsap
+      .timeline()
+      .fromTo(
+        number,
+        { scale: 0.5, opacity: 0, color: FLASH_COLOR },
+        { scale: 1.2, opacity: 1, duration: 0.25, ease: "back.out(3)" },
+      )
+      .to(number, {
+        scale: 1,
+        color: "rgba(173, 69, 198, 0.1)",
+        duration: 0.25,
+        ease: "power2.out",
+      });
+  };
+
+  const titlePop = (card) => {
+    const title = card.querySelector(".skill-card-header h3");
+    if (!title) return null;
+    return gsap
+      .timeline()
+      .fromTo(
+        title,
+        { scale: 0.6, color: FLASH_COLOR },
+        { scale: 1.15, duration: 0.25, ease: "back.out(3)" },
+      )
+      .to(title, {
+        scale: 1,
+        color: "#ad45c6",
+        duration: 0.25,
+        ease: "power2.out",
+      });
+  };
+
+  // Le chiffre puis le titre de la 1ère carte se révèlent seulement une
+  // fois la section réellement épinglée (pas avant, en approchant juste)
+  const firstNumber = cards[0].querySelector(".skill-number");
+  if (firstNumber) {
+    gsap.set(firstNumber, { scale: 0.5, opacity: 0 });
+    const introTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#competences",
+        start: "top top",
+        toggleActions: "play none none reverse",
+      },
+    });
+    introTl
+      .fromTo(
+        firstNumber,
+        { color: FLASH_COLOR },
+        {
+          scale: 1.2,
+          opacity: 1,
+          duration: 0.4,
+          ease: "back.out(3)",
+        },
+      )
+      .to(firstNumber, { scale: 1, duration: 0.3, ease: "power2.out" });
+    const firstTitlePop = titlePop(cards[0]);
+    if (firstTitlePop) introTl.add(firstTitlePop);
+  }
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#competences",
+      start: "top top",
+      end: scrollDistance,
+      pin: true,
+      scrub: 0.6,
+      anticipatePin: 1,
+      // Verrouille le scroll sur la carte la plus proche au relâchement
+      snap: {
+        snapTo: 1 / (cards.length - 1),
+        duration: 0.35,
+        ease: "power1.inOut",
+      },
+      onUpdate: (self) => {
+        const activeIndex = Math.round(self.progress * (cards.length - 1));
+        cards.forEach((card, i) =>
+          card.classList.toggle("is-active", i === activeIndex),
+        );
+      },
+    },
+  });
+
+  cards.forEach((card, i) => {
+    if (i === cards.length - 1) return;
+    const next = cards[i + 1];
+    tl.to(
+      card,
+      {
+        opacity: 0,
+        scale: 0.9,
+        y: -40,
+        filter: "blur(8px)",
+        zIndex: 1,
+        duration: 1,
+      },
+      i,
+    ).to(
+      next,
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        filter: "blur(0px)",
+        zIndex: 2,
+        duration: 1,
+      },
+      i,
+    );
+
+    const reveal = gsap.timeline();
+    const pop = numberPop(next);
+    if (pop) reveal.add(pop);
+    const titleReveal = titlePop(next);
+    if (titleReveal) reveal.add(titleReveal);
+    tl.add(reveal, i);
+  });
+
+  // L'étoile tourne en continu ; comme sa rotation est scrubée, sa vitesse
+  // suit naturellement celle du scroll (on scrolle vite -> elle tourne vite).
+  if (hub) {
+    gsap.to(hub, {
+      rotation: 360 * cards.length,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#competences",
+        start: "top top",
+        end: scrollDistance,
+        scrub: 0.6,
+      },
+    });
+  }
 }
 
 // ===== EFFET PARALLAX 3D SUR LES PROJETS =====
